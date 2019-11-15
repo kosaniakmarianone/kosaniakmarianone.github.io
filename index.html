@@ -6,115 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script async src='temes.js'></script>
     <title>Document</title>
 </head>
 <body>
-    <h1 align='center'>Study Link</h1>
-    <h3 align='center'><Курс HTML/CSS></h3>
+    <div class="block">
+        <h1 align='center'>Study Link</h1>
+        <h3 align='center'><Курс HTML/CSS></h3>
 
-    <ol id='program_list'>
+        <ol id='program_list'>
 
-    </ol>
-
+        </ol>
+    </div>
     <script>
         $(document).ready(function(){
-            var temes = [
-                {
-                    tema: 'Вступний урок',
-                    task: '', 
-                    materials: '',
-                    video: 'https://www.youtube.com/watch?v=XWIbP87SrWA&feature=youtu.be'
-                },
-                {
-                    tema: 'Заголовки, введення в CSS', 
-                    task: '',
-                    materials: '', 
-                    video: 'https://www.youtube.com/watch?v=8KSKvlqDYbw&feature=youtu.be'
-                },
-                {
-                    tema: 'Форматування тексту і фон сторінки', 
-                    task: [
-                        't3/z1/index.html',
-                        't3/z2/index.html',
-                        't3/z3/index.html'
-                    ], 
-                    materials: '', 
-                    video: 'https://www.youtube.com/watch?v=Fe1zISWD-uE&feature=youtu.be'
-                },
-                {
-                    tema: 'Списки, тег hr', 
-                    task: '', 
-                    materials: '', 
-                    video: 'https://www.youtube.com/watch?v=eIXApww4qx0&feature=youtu.be'
-                },
-                {
-                    tema: 'Самостійна робота', 
-                    task: '',
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота над помилками, розвиваючі вправи', 
-                    task: '', 
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота з Git #1', 
-                    task: '', materials: '', 
-                    video: 'https://www.youtube.com/watch?v=J5_4G909T14&feature=youtu.be'},
-                {
-                    tema: 'Робота з Git #2', 
-                    task: '', 
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота з Git #3', 
-                    task: '',
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота з Git #4', 
-                    task: '', 
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота з Git #5', 
-                    task: '',
-                    materials: '', 
-                    video: ''
-                },
-                {
-                    tema: 'Робота з зображеннями в HTML, CSS', 
-                    task: [
-                        't12/1/img_1.html',
-                        't12/2/img_2.html',
-                        't12/3/img_3.html'
-                    ], 
-                    materials: 'https://drive.google.com/drive/folders/1d7DQ8NrSjL7oOGeVhM7GII3InORer-qN', 
-                    video: 'https://www.youtube.com/watch?v=gx8uKZZna2g&feature=youtu.be'
-                }
-            ]
-
+            
             temes.map( item => {
                 let Task, Materials, Video;
                 if(item.task !== ''){
                     let i = 1;
                     Task='<li>Завдання<ol>';
                     item.task.map(zavd => {
-                        Task+='<li><a href="'+zavd+'">Завдання'+i+'</a></li>';
+                        Task+='<li><a target="_blank" href="'+zavd+'">Завдання '+i+'</a></li>';
                         i++;
                     })
                     Task+='</ol></li>';
                 }
                 if(item.materials !== ''){
-                    Materials = '<li><a href="'+item.materials+'">Матеріали</a></li>'
+                    Materials = '<li><a target="_blank" href="'+item.materials+'">Матеріали</a></li>'
                 }
                 if(item.video !== ''){
-                    Video = '<li><a href="'+item.video+'">Відео</a></li>'
+                    Video = '<li><a target="_blank" href="'+item.video+'">Відео</a></li>'
                 }
                 if(item.task == ''){
                     Task = ''
@@ -124,6 +46,9 @@
                 }
                 if(item.video == ''){
                     Video = ''
+                }
+                if(item.task == '' && item.video == '' && item.materials == ''){
+                    Task = '<li>Матеріалів поки що немає</li>'
                 }
                 
                 $("#program_list").append(

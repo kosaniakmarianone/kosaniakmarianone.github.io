@@ -1,5 +1,17 @@
+*{
+    width: 900px;
+    margin: 0 auto;
+}
+.block{
+    width: 900px;
+    background-color: lightgray;
+}
 h1{
     color: green;
+    font-size: 60px;
+}
+h3{
+    font-size: 25px;
 }
 .hide{
     height: 0;
@@ -9,17 +21,17 @@ h1{
     visibility: visible;
 }
 ol>li{
-    font-size: 20px;
+    font-size: 24px;
     font-family: cursive;
 }
 ol>li:hover{
     color: red;
 }
 ol>li>a:hover{
-    color: red;
+    color: green;
 }
 ul>li>a{
-    font-size: 20px;
+    font-size: 22px;
     font-family: cursive;
 }
 ul>li>a:hover{
