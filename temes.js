@@ -7,7 +7,7 @@ var temes = [
     },
     {
         tema: 'Заголовки, введення в CSS', 
-        task: 't2/123.html',
+        task: ['t2/123.html'],
         materials: '', 
         video: 'https://www.youtube.com/watch?v=8KSKvlqDYbw&feature=youtu.be'
     },
