@@ -10,7 +10,7 @@ var temes = [
         task: [
             't2/z1.html'
         ],
-        materials: 'z1.txt', 
+        materials: 't2/z1.txt', 
         video: 'https://www.youtube.com/watch?v=8KSKvlqDYbw&feature=youtu.be'
     },
     {
