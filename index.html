@@ -19,7 +19,7 @@
     <div class="block">
         <!--Вікно входу-->
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" id='signIn' class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 Увійти
             </button>
 
@@ -56,7 +56,7 @@
 
         <h1 align="center">Study Link</h1>
         <h3 align="center"><Курс HTML/CSS></h3>
-
+        <p id='errorBlock'></p>
         <ol id="program_list">
 
         </ol>
@@ -76,76 +76,92 @@
             let temsPassed;
             //
             let startTem = 0;
+            let loged;
 
             // перевірка з файлу groups.js
             allgroups.map(item => {
                 if(school == item.school){
                     //console.log(item)
+                    loged = false;
                     item.groups.map(item_group =>{
                         if(item_group.name == group && item_group.password == password){
                             temsPassed = item_group.temes_pass;
                             console.log('login succes', item_group.temes_pass);
+                            loged = true;
+                            if(loged){showList()}//якщо підійшов логін і пароль відображаємо список
                         }
                     })
+                    if(!loged){
+                        $('#errorBlock').text('Невірна назва групи, або пароль');
+                        $('#errorBlock').append(
+                            '<a href="http://kosaniakmarianone.github.io" class="btn btn-warning" >Спробувати ще</a>'
+                        );
+                        $('#signIn').hide();
+                    }
                     
                 }
 
             })
 
             //малюєм список завдань дата витягується з файлу temes.js
-            temes.map( item => {
-                if(startTem < temsPassed){
-                    let Task, Materials, Video;
-                    if(item.task !== ''){
-                        let i = 1;
-                        Task='<li>Завдання<ol>';
-                        item.task.map(zavd => {
-                            Task+='<li><a target="_blank" href="'+zavd+'">Завдання '+i+'</a></li>';
-                            i++;
-                        })
-                        Task+='</ol></li>';
+            function showList(){
+                temes.map( item => {
+                    if(startTem < temsPassed){
+                        let Task, Materials, Video;
+                        if(item.task !== ''){
+                            let i = 1;
+                            Task='<li>Завдання<ol>';
+                            item.task.map(zavd => {
+                                Task+='<li><a target="_blank" href="'+zavd+'">Завдання '+i+'</a></li>';
+                                i++;
+                            })
+                            Task+='</ol></li>';
+                        }
+                        if(item.materials !== ''){
+                            Materials = '<li><a target="_blank" href="'+item.materials+'">Матеріали</a></li>'
+                        }
+                        if(item.video !== ''){
+                            Video = '<li><a target="_blank" href="'+item.video+'">Відео</a></li>'
+                        }
+                        if(item.task == ''){
+                            Task = ''
+                        }
+                        if(item.materials == ''){
+                            Materials = ''
+                        }
+                        if(item.video == ''){
+                            Video = ''
+                        }
+                        if(item.task == '' && item.video == '' && item.materials == ''){
+                            Task = '<li>Тема не відкрита</li>'
+                        }
+                        
+                        $("#program_list").append(
+                            '<li class="list">'+item.tema+
+                                '<ul class="hide">'+
+                                    Task+
+                                    Materials+
+                                    Video+
+                                '</ul>'+
+                            '</li>'
+                        )
+                        startTem++;
                     }
-                    if(item.materials !== ''){
-                        Materials = '<li><a target="_blank" href="'+item.materials+'">Матеріали</a></li>'
-                    }
-                    if(item.video !== ''){
-                        Video = '<li><a target="_blank" href="'+item.video+'">Відео</a></li>'
-                    }
-                    if(item.task == ''){
-                        Task = ''
-                    }
-                    if(item.materials == ''){
-                        Materials = ''
-                    }
-                    if(item.video == ''){
-                        Video = ''
-                    }
-                    if(item.task == '' && item.video == '' && item.materials == ''){
-                        Task = '<li>Тема не відкрита</li>'
-                    }
-                    
-                    $("#program_list").append(
-                        '<li class="list">'+item.tema+
-                            '<ul class="hide">'+
-                                Task+
-                                Materials+
-                                Video+
-                            '</ul>'+
-                        '</li>'
-                    )
-                    startTem++;
                 }
+
+                );
+                //події при нажатті на список завдань
+                $('.list').click(function(){
+                    if($(this).children().attr('class') == 'hide'){
+                        $(this).children('.hide').removeClass( "hide" ).addClass( "show" )  
+                    } 
+                    else{
+                        $(this).children('.show').removeClass( "show" ).addClass( "hide" )  
+                    } 
+                })
+
+                $('#signIn').hide();
             }
-            );
-            //події при нажатті на список завдань
-            $('.list').click(function(){
-                if($(this).children().attr('class') == 'hide'){
-                    $(this).children('.hide').removeClass( "hide" ).addClass( "show" )  
-                } 
-                else{
-                    $(this).children('.show').removeClass( "show" ).addClass( "hide" )  
-                } 
-            })
         
         }
     </script>
