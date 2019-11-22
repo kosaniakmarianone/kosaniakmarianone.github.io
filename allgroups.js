@@ -4,6 +4,7 @@ var allgroups = [
         groups: [
             {
 				name: 'SL-102',
+				password: '102kmv',
 				temes_open: 8,
 				temes_pass: 7,
 				pupils: [
@@ -21,6 +22,8 @@ var allgroups = [
 				name: 'SL-103',
 				temes_open: 8,
 				temes_pass: 7,
+				password: '102mkv',
+
 				pupils: [
 					{name: 'Устим Перепилиця', phone: '', password: '', debt: ''},
 					{name: 'Олійник Володимир', phone: '', password: '', debt: ''},
@@ -32,6 +35,7 @@ var allgroups = [
 				name: 'SL-104',
 				temes_open: 5,
 				temes_pass: 5,
+				password: '102vkm',
 				pupils: [
 					{name: 'Лабяк Анастасія', phone: '', password: '', debt: ''},
 					{name: 'Софія Сущик', phone: '', password: '', debt: ''},
