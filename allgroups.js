@@ -2,12 +2,12 @@ var allgroups = [
     {
         school: 'Надія',
         groups: [
-            {name: 'SL-102', password: '102kmv', temes_pass: 7},
-            {name: 'SL-103', password: '103kmv', temes_pass: 7},
-            {name: 'SL-104', password: '104kmv', temes_pass: 7},
-            {name: 'SL-102s', password: '102kmv', temes_pass: 7},
-            {name: 'SL-103s', password: '103kmv', temes_pass: 7},
-            {name: 'SL-104s', password: '104kmv', temes_pass: 7}
+            {name: 'SL-102', password: '102kmv', temes_pass: 8},
+            {name: 'SL-103', password: '103kmv', temes_pass: 8},
+            {name: 'SL-104', password: '104kmv', temes_pass: 8},
+            {name: 'SL-102s', password: '102kmv', temes_pass: 8},
+            {name: 'SL-103s', password: '103kmv', temes_pass: 8},
+            {name: 'SL-104s', password: '104kmv', temes_pass: 8}
         ]
     },
     {
