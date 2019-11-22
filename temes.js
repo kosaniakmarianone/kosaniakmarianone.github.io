@@ -1,7 +1,10 @@
 var temes = [
     {
         tema: 'Вступний урок',
-        task: '', 
+        task: [
+			't1/z1.html',
+			't1/z2.html'
+		], 
         materials: '',
         video: 'https://www.youtube.com/watch?v=XWIbP87SrWA&feature=youtu.be'
     },
@@ -35,7 +38,7 @@ var temes = [
     },
     {
         tema: 'Самостійна робота', 
-        task: '',
+        task: ['t5/index.html'],
         materials: '', 
         video: ''
     },
@@ -48,7 +51,18 @@ var temes = [
     {
         tema: 'Робота з Git #1', 
         task: '', materials: '', 
-        video: 'https://www.youtube.com/watch?v=J5_4G909T14&feature=youtu.be'},
+        video: 'https://www.youtube.com/watch?v=J5_4G909T14&feature=youtu.be'
+	},
+	{
+        tema: 'Робота з зображеннями в HTML, CSS', 
+        task: [
+            't12/1/img_1.html',
+            't12/2/img_2.html',
+            't12/3/img_3.html'
+        ], 
+        materials: 'https://drive.google.com/drive/folders/1d7DQ8NrSjL7oOGeVhM7GII3InORer-qN', 
+        video: 'https://www.youtube.com/watch?v=gx8uKZZna2g&feature=youtu.be'
+    },
     {
         tema: 'Робота з Git #2', 
         task: '', 
