@@ -36,3 +36,8 @@ ul>li>a{
 ul>li>a:hover{
     color: green;
 }
+#errorBlock{
+	color: red;
+	font-size: 28px;
+	font-family: Tatoma
+}
