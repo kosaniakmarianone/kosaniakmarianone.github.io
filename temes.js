@@ -44,13 +44,14 @@ var temes = [
     },
     {
         tema: 'Робота над помилками, розвиваючі вправи', 
-        task: '', 
+        task: [''], 
         materials: '', 
         video: ''
     },
     {
         tema: 'Робота з Git #1', 
-        task: '', materials: '', 
+        task: [''],
+		materials: '', 
         video: 'https://www.youtube.com/watch?v=J5_4G909T14&feature=youtu.be'
 	},
 	{
@@ -63,38 +64,34 @@ var temes = [
         materials: 'https://drive.google.com/drive/folders/1d7DQ8NrSjL7oOGeVhM7GII3InORer-qN', 
         video: 'https://www.youtube.com/watch?v=gx8uKZZna2g&feature=youtu.be'
     },
+	{
+        tema: 'Посилання', 
+        task: ['t13/1.html'], 
+        materials: '', 
+        video: ''
+    },
     {
         tema: 'Робота з Git #2', 
-        task: '', 
+        task: [''], 
         materials: '', 
         video: ''
     },
     {
         tema: 'Робота з Git #3', 
-        task: '',
+        task: [''],
         materials: '', 
         video: ''
     },
     {
         tema: 'Робота з Git #4', 
-        task: '', 
+        task: [''], 
         materials: '', 
         video: ''
     },
     {
         tema: 'Робота з Git #5', 
-        task: '',
+        task: [''],
         materials: '', 
         video: ''
-    },
-    {
-        tema: 'Робота з зображеннями в HTML, CSS', 
-        task: [
-            't12/1/img_1.html',
-            't12/2/img_2.html',
-            't12/3/img_3.html'
-        ], 
-        materials: 'https://drive.google.com/drive/folders/1d7DQ8NrSjL7oOGeVhM7GII3InORer-qN', 
-        video: 'https://www.youtube.com/watch?v=gx8uKZZna2g&feature=youtu.be'
     }
 ]
