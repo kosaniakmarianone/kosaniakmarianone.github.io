@@ -5,8 +5,8 @@ var allgroups = [
             {
 				name: 'SL-102',
 				password: '102kmv',
-				temes_open: 8,
-				temes_pass: 7,
+				temes_open: 9,
+				temes_pass: 9,
 				pupils: [
 					{name: 'Ковальчук Юрій', phone: '', password: '', debt: ''},
 					{name: 'Кушнірчук Марян', phone: '', password: '', debt: ''},
