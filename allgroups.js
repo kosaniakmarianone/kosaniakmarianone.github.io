@@ -49,8 +49,9 @@ var allgroups = [
 			},
 			{
 				name: 'SL-102s',
-				temes_open: 8,
-				temes_pass: 7,
+				temes_open: 6,
+				temes_pass: 6,
+				password: '102skmv',
 				pupils: [
 					{name: 'Яна Проскурякова', phone: '', password: '', debt: ''},
 					{name: 'Лебединець Роман', phone: '', password: '', debt: ''},
@@ -62,8 +63,9 @@ var allgroups = [
 			},
 			{
 				name: 'SL-103s',
-				temes_open: 8,
-				temes_pass: 7,
+				temes_open: 9,
+				temes_pass: 9,
+				password: '103smkv',
 				pupils: [
 					{name: 'Якубовський Василь', phone: '', password: '', debt: ''},
 					{name: 'Сало Владислав', phone: '', password: '', debt: ''},
@@ -77,7 +79,8 @@ var allgroups = [
 			{
 				name: 'SL-104s',
 				temes_open: 8,
-				temes_pass: 7,
+				temes_pass: 8,
+				password: '104svkm',
 				pupils: [
 					{name: 'Козак Анастасія', phone: '', password: '', debt: ''},
 					{name: 'Білан Максим', phone: '', password: '', debt: ''},
