@@ -1,0 +1,73 @@
+завантажити emmet за посиланням https://www.youtube.com/redirect?q=http%3A%2F%2Fdownload.emmet.io%2Fnpp%2Femmet-npp.zip&v=gUUhVAJ26E8&event=video_description&redir_token=y5bLvY56uemvK1d19ttNneZlIlB8MTU4MTc5NjE4NEAxNTgxNzA5Nzg0
+
+	інструкція для встановлення у відео https://www.youtube.com/watch?v=gUUhVAJ26E8
+
+1 Потрібно за допомогою emmet створити каркас сторінки 
+
+	<header>
+		<nav>
+			<a href="">Місто 1</a>
+			<a href="">Місто 2</a>
+			<a href="">Місто 3</a>
+		</nav>
+	</header>
+	
+	<main>
+		<div class="block w-33 foat-left bg1">
+			
+		</div>
+		<div class="block w-33 foat-left bg2">
+			
+		</div>
+		<div class="block w-33 foat-left bg3">
+			
+		</div>
+	</main>
+
+	<footer>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+	</footer>
+	
+Рішення{
+		header>nav>a{Місто $}*3
+		
+		.main>.block.w33.foat-left.bg$*3
+		
+		footer>.block-footer.w-33.foat-left.t-a-c*3
+	}
+	
+2 Три блоки всередині main заповнити з таким чином
+	1)
+		<h1 align='center'>Райони міста Львів</h1>
+		<ol>
+			<li>Галицький</li>
+			<li>Залізничний</li>
+			<li>Личаківський</li>
+			<li>Франківський</li>
+			<li>Шевченківський</li>
+			<li>Сихівський</li>
+		</ol>
+		
+		Рішення{
+			h1[align=center]{Райони міста Львів}
+			ol>li{район №$}*6
+		}
+	2) 
+		<h1 align="center">Населення <br>(включно з областю)</h1>
+		<p><b>Чоловіків: 1 085 000</b></p>
+		<p><b>Жінок: 1 205 000</b></p>
+		
+		Рішення{
+			h1[align=center]{Населення br(включно з областю)}
+			p>b{Стать: }
+		}
+	3) 
+		<h1 align="center">Герб міста Львів</h1>
+		<h1 align="center"><img src="lviv.png" alt="" width="50%"></h1>
+		
+		Рішення{
+			h1[align=center]{Герб міста Львів}
+			h1[align=center]>img[src=lviv.png width=100px]
+		}
