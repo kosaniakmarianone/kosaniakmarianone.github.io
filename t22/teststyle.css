@@ -1,0 +1,94 @@
+body{
+	background: grey;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+header{
+	width: 100%;
+	height: 250px;
+	background: white;
+}
+.button{
+	margin-left: 10px;
+	height: 50px;
+	width: 98%;
+}
+.menu{
+	text-decoration: none;
+    font-size:20px;
+    color:black;
+}
+.menu:hover{
+    transition: 0.04s;
+    border-bottom: 2px solid black;
+}
+.name{
+	font-size:80px;
+	text-align: center;
+	position: relative;
+	top:-80px;
+}
+.mainbutton{
+    border-bottom:2px solid black;
+}
+.main{
+	background:url("divback.png") #e8f0e5;
+	background-size:50%;
+	background-repeat:no-repeat;
+	width: 98%;
+	background-position: 95%;
+	height: 400px;
+	padding: 1%;
+}
+.button1{
+	text-decoration: none; 
+	color:whitesmoke;
+	font-size:35px; 
+	margin: 270px;
+	background:black; 
+	width:200px;
+	height: 50px; 
+	padding: 10px;
+	border-radius: 30px;
+	position:relative;
+}
+.button1:hover{
+	box-shadow: 0px 0px 10px black;  
+	transition: 0.3s;
+}
+.text{
+	margin: 0;
+	width: 700px;
+	height: 200px;
+}
+.block{	
+	width: 100%;
+	height: 400px;
+	background:linear-gradient(to right,grey,#161414,black);
+}
+.article{
+	position: relative; 
+	width: 700px;
+	height: 200px;
+	top:50px;
+	left:45%;
+	padding: 10px;
+	color:whitesmoke;
+}
+.footer{
+	width: 98%;
+	height: 130px;
+	background:white;
+	padding: 1%;
+}
+.contact{
+	color:black;
+	margin: 
+	}
+.list{
+	text-decoration: none;
+	text-align: center;
+}
+.last{
+	font-size:15px;
+}
