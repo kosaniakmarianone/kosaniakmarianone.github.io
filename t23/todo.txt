@@ -1,0 +1,51 @@
+1 Потрібно за допомогою emmet створити каркас сторінки 
+
+	<header>
+		<nav>
+			<a href="">Місто 1</a>
+			<a href="">Місто 2</a>
+			<a href="">Місто 3</a>
+		</nav>
+	</header>
+	
+	<main>
+		<div class="block w-33 foat-left bg1">
+			
+		</div>
+		<div class="block w-33 foat-left bg2">
+			
+		</div>
+		<div class="block w-33 foat-left bg3">
+			
+		</div>
+	</main>
+
+	<footer>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+		<div class="block-footer w-33 foat-left t-a-c"></div>
+	</footer>
+	
+	
+2 Три блоки всередині main заповнити з таким чином
+	1)
+		<h1 align='center'>Райони міста Львів</h1>
+		<ol>
+			<li>Галицький</li>
+			<li>Залізничний</li>
+			<li>Личаківський</li>
+			<li>Франківський</li>
+			<li>Шевченківський</li>
+			<li>Сихівський</li>
+		</ol>
+		
+	2) 
+		<h1 align="center">Населення <br>(включно з областю)</h1>
+		<p><b>Чоловіків: 1 085 000</b></p>
+		<p><b>Жінок: 1 205 000</b></p>
+		
+		
+	3) 
+		<h1 align="center">Герб міста Львів</h1>
+		<h1 align="center"><img src="lviv.png" alt="" width="50%"></h1>
+		
