@@ -1,0 +1,14 @@
+body{
+    font-family: cursive;
+}
+main{
+    background-color: rgb(247, 238, 247);
+}
+td, th{
+    border: 1px solid black;
+    padding: 15px 30px;
+    text-align: center;
+}
+table{
+    border: 1px solid black;
+}
