@@ -1,0 +1,55 @@
+	body{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	h1, h2{
+		color: navy;
+		font-family: cursive;
+	}
+	h2{
+		margin-bottom: 400px;
+	}
+	.day{
+		width: 130px;
+		height: 120px;
+		background: lightblue;
+		margin: 10px 5px;
+		float: left;
+		box-sizing: border-box;
+		padding: 50px 50px;
+		box-shadow: 2px 2px 5px blue;
+		transition: all 0.8s ease;
+		font-size: 20px;
+	}
+	.no-order{
+		width: 130px;
+		height: 120px;
+		margin: 10px 5px;
+		float: left;
+		box-sizing: border-box;
+		padding: 50px 50px;
+		box-shadow: 2px 2px 5px red;
+		transition: all 0.8s ease;
+		background: red;
+		font-size: 20px;
+		color: white;
+	}
+	.day:hover{
+		transform: rotateZ(10deg) scale(1.05);
+		background: lime;
+		cursor: pointer;
+		box-shadow: 2px 2px 5px green;
+	}
+	.no-order:hover{
+		animation-duration: 0.7s;
+		background:red;
+		animation-name: animation;
+	}
+	@keyframes animation{
+		0%{transform:rotate(0deg);}
+		20%{transform:rotate(15deg);}
+		40%{transform:rotate(-15deg);}
+		60%{transform:rotate(15deg);}
+		80%{transform:rotate(-15deg);}
+		100%{transform:rotate(0deg);}
+	}
