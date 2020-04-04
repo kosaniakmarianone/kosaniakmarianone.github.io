@@ -1,0 +1,66 @@
+body{
+	background: linear-gradient(to bottom, #6d7678, #e9eef0, #e9eef0, #e9eef0,white);
+}
+header, main, footer{
+	width: 1000px;
+	margin: 0 auto;
+}
+nav>a{
+	text-decoration: none;
+	color: white;
+	margin-right: 10px;
+	font-size: 2rem
+}
+nav>a:hover{
+	color: navy;
+	text-decoration: underline;
+}
+.block{
+	height: 400px;
+}
+.w-35{
+	width: 35%;
+}
+.w-65{
+	width: 65%;
+	color: blue;
+}
+.fl{
+	float: left;
+}
+input[type=number]{
+	width: 80px;
+	height: 30px;
+	text-align: center;
+	border-radius: 8px;
+}
+.button{
+	padding: 8px;
+	text-align: center;
+	background-color: blue;
+	border: 0;
+	color: white;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-weight: 600;
+}
+.photo{
+	width: 90%;
+}
+.vstavka{
+	margin: 50px 0 100px;
+	font-size: 4rem;
+	color: white;
+}
+footer{
+	padding: 10px;
+	background: gray;
+	color: white;
+	font-size: 1.4rem;
+	height: 30px;
+}
+.w-33{
+	width: 33.3333%;
+	float: left;
+	text-align: center;
+}
