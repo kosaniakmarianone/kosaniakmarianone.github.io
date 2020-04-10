@@ -53,6 +53,7 @@ input[type=number]{
 }
 .photo{
 	width: 80%;
+	max-height: 300px;
 	margin-left: 10%;
 }
 .vstavka{
