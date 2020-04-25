@@ -1,4 +1,3 @@
-marikkv.github.io/StudyLink/
 
 background-repeat: no-repeat; - повторення заднього фону(у випадку якщо фонова картика менша за поле сторінки)
 

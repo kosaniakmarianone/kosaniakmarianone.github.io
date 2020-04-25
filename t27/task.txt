@@ -1,0 +1,18 @@
+Використати такі стилі тексту 
+
+	<link href="https://fonts.googleapis.com/css2?family=Cuprum:ital@1&family=Pacifico&display=swap" rel="stylesheet">
+
+Меню , Заголовки до статтей, кнопка для пошуку, списки
+
+	font-family: 'Cuprum', sans-serif;
+
+Вставка з фоном (картика)
+
+	font-family: 'Pacifico', cursive;
+	
+Картинку поставити фоном окремого блоку з класом header
+
+Розміщувати всі блоки на сайті за допомогою display: flex;
+
+
+	
