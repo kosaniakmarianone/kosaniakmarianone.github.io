@@ -1,18 +1,30 @@
+Коротко про display: flex - https://tproger.ru/translations/how-css-flexbox-works/
+
+Розміщувати всі блоки на сайті за допомогою display: flex;
+
+Картинку поставити фоном окремого блоку з класом header
+
+Колір блоків
+	1) Задній фон сторінки- rgb(20, 20, 20);
+
+	2) Сірі блоки - #414142;
+
 Використати такі стилі тексту 
 
 	<link href="https://fonts.googleapis.com/css2?family=Cuprum:ital@1&family=Pacifico&display=swap" rel="stylesheet">
 
-Меню , Заголовки до статтей, кнопка для пошуку, списки
 
-	font-family: 'Cuprum', sans-serif;
+	1) Меню, Заголовки до статтей, кнопка для пошуку, списки
 
-Вставка з фоном (картика)
+		font-family: 'Cuprum', sans-serif;
 
-	font-family: 'Pacifico', cursive;
-	
-Картинку поставити фоном окремого блоку з класом header
+	2) Вставка з фоном (картика)
 
-Розміщувати всі блоки на сайті за допомогою display: flex;
+		font-family: 'Pacifico', cursive;
+		
+
+
+
 
 
 	
