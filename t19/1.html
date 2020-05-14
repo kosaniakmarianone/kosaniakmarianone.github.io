@@ -4,7 +4,8 @@
 			<style>
 				body{
 					margin:0; 
-					background:linear-gradient(to bottom,red,purple);
+					background-image: url('index.jpg');
+					background-size: 50%;
 					background-attachment: fixed;
 				}
 				li{
@@ -25,6 +26,9 @@
 					background-color: white;
 					padding:3px;
 				}
+				article{
+					margin-top: 100px;
+				}
 				.button{
 					padding:8px; 
 					border-bottom:3px solid blue;
@@ -37,8 +41,9 @@
 					border-bottom:4px solid red; 
 					color:red;
 				}
-				.button1{border-bottom:4px solid blue;}
-			
+				.button1{
+					border-bottom:4px solid blue;
+				}
 				.main_part{ 
 					height: 580px; 
 					width: 100%;
@@ -55,6 +60,20 @@
 				}
 				.img{margin-top:90%;}
 				.img2{margin-right:80px;margin-left:50px;width:200px;}
+				footer{
+					width: 100%;
+					float: left;
+					background:linear-gradient(to right, gray, silver, gray);
+					color: white;
+					font-size: 20px
+				}
+				.footer1{
+					float: left;
+					width: 33.3333%;
+					text-align: center;
+					padding: 30px 0;
+					
+				}
 			</style>
 		<title>
 		</title>
@@ -66,17 +85,17 @@
 				<li><a href="2.html" class="button button2">Галерея</a>
 			</ul>
 		</header>	
-		<main>
+		<main class="main_part">
 				<h1 align="center" class="name">Моя сторінка</h1>
 
 				<img src="images.jfif" align="left" class="img2">
 				
-				<p align="left" >
-				<p>Ім'я:</p>
-				<p>Інформація про мене:</p>
-				<p>Вік:</p>
-				<p>Е-пошта:</p>
-				</p>
+				<article>
+					<p>Ім'я:</p>
+					<p>Інформація про мене:</p>
+					<p>Вік:</p>
+					<p>Е-пошта:</p>
+				</article>
 		</main>
 		<footer>
 			<div class='footer1'>Logo</div>
