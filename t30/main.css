@@ -1,0 +1,226 @@
+/*OpenSans
+OpenSans Extrabold
+FontAwesome
+OpenSans Bold*/
+header .header__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1170px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header .header__content .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #ff8261;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+header .header__content .menu .menu__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  height: 60px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 14px;
+  -webkit-transition: background 0.5s;
+  transition: background 0.5s;
+}
+
+header .header__content .menu .menu__items:hover {
+  background: #44a8cc;
+}
+
+header .header__content .menu .active {
+  background: #52cbf8;
+}
+
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.landing {
+  background: #222836;
+  height: 570px;
+}
+
+.landing .landing__content {
+  max-width: 1170px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.landing .landing__content h1 {
+  font-size: 80px;
+  margin-bottom: 80px;
+}
+
+.landing .landing__content h3 {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.search {
+  background: #e7f4f8;
+  height: 200px;
+}
+
+.search .search__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1170px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.search .search__content input, .search .search__content select {
+  width: 90%;
+  height: 40px;
+  border: 1px solid gray;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 20px;
+}
+
+.search .search__content .search__logo {
+  width: 20%;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.search .search__content .search__name {
+  width: 30%;
+}
+
+.search .search__content .search__year {
+  width: 15%;
+}
+
+.search .search__content .search__host {
+  width: 15%;
+}
+
+.search .search__content .search__button {
+  width: 20%;
+  background: #ff8261;
+  text-align: center;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: uppercase;
+}
+
+.search .search__content .search__button a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+}
+
+.search .search__content .search__button:hover {
+  background-color: #52cbf8;
+}
+
+.hosting {
+  height: 570px;
+}
+
+.hosting .hosting__content {
+  max-width: 1170px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.hosting .hosting__content .hosting__box {
+  width: 250px;
+  height: 400px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.hosting .hosting__content .hosting__box h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+.hosting .hosting__content .hosting__box .hosting__button {
+  height: 40px;
+  width: 80%;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #52cbf8;
+  margin-left: 10%;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hosting .hosting__content .hosting__box p {
+  width: 70%;
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+}
+
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 20px;
+}
+/*# sourceMappingURL=main.css.map */
