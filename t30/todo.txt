@@ -1,0 +1,39 @@
+max-width: 1170px;
+
+поділити сайт на блоки 
+	header
+		menu
+	.landing
+	.search
+		5 блоків довжина у %
+		20% 30% 15% 15% 20%
+	.hosting
+		.hosting-block
+
+menu
+	height - 60px;
+	background - #ff8261;
+	
+	:hover
+		#52cbf8; - lightblue
+		
+landing
+	height: 570px;
+	background: #222836;
+		
+		h1
+			font-size: 80px;
+		h3
+			font-size: 30px
+
+search
+	20% 30% 15% 15% 20%
+	background: #e7f4f8;
+	height: 200px;
+
+hosting
+	height: 570px;
+	
+	.hosting-block
+		width: 250px;
+		height: 400px;
