@@ -1,106 +1,121 @@
 <!DOCTYPE html>
 <html>
 	<head>
-			<style>
-				body{
-					margin:0; 
-					background-image: url('index.jpg');
-					background-size: 50%;
-					background-attachment: fixed;
-				}
-				li{
-					list-style-type:none;
-					float:left;
-					margin-right:20px;
-				}
-				.button{
-					text-decoration:none;
-					color:blue;
-				}
-				.menu{
-					height:60px;
-					background:linear-gradient(to right,white,white,blue);
-					position: fixed;  
-					top: 0;  
-					width: 100%;  
-					background-color: white;
-					padding:3px;
-				}
-				article{
-					margin-top: 100px;
-				}
-				.button{
-					padding:8px; 
-					border-bottom:3px solid blue;
-				}	
-				.button:hover{
-					border-bottom:3px solid red;
-					color:red;
-				}
-				.button1:hover{
-					border-bottom:4px solid red; 
-					color:red;
-				}
-				.button1{
-					border-bottom:4px solid blue;
-				}
-				.main_part{ 
-					height: 580px; 
-					width: 100%;
-					margin-top:5%; 
-				}
-				.name{
-					color:white;
-					font-size:60px;
-					font-family:cursive;
-				}
-				p{
-					color:white;
-					padding: 10px; 
-				}
-				.img{margin-top:90%;}
-				.img2{margin-right:80px;margin-left:50px;width:200px;}
-				footer{
-					width: 100%;
-					float: left;
-					background:linear-gradient(to right, gray, silver, gray);
-					color: white;
-					font-size: 20px
-				}
-				.footer1{
-					float: left;
-					width: 33.3333%;
-					text-align: center;
-					padding: 30px 0;
-					
-				}
-			</style>
-		<title>
-		</title>
+		<style>
+			body{
+				margin:0; 
+				background-size: 100%;
+				background-attachment: fixed;
+				background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('me.jpg');
+				color: white;
+			}
+			.button{
+				text-decoration:none;
+				color: white;
+				border-bottom:3px solid white;
+				padding: 5px;
+			}
+			.menu{
+				width: 100%;  
+				border-bottom: 2px solid white;
+				padding:3px;
+				height: 50px;
+				padding: 10px 20px 5px;
+				box-sizing: border-box;
+			}
+			article{
+				margin-top: 100px;
+			}
+			.button:hover{
+				color: blue;
+				border-bottom:3px solid blue;
+			}
+			.main_part{ 
+				height: 650px; 
+				width: 70%;
+				float: left;
+			}
+			.aside_menu{
+				font-family: cursive;
+				height: 650px;
+				width: 30%;
+				float: left;
+				box-sizing: border-box;
+				padding: 20px 30px;
+				border-left: 2px solid white;
+			}
+			.aside_menu a{
+				text-decoration: none;
+				color: white;
+				font-size: 20px;
+			}
+			.aside_menu a:hover{
+				text-decoration: underline;
+			}
+			.name{
+				font-size:40px;
+				font-family:cursive;
+			}
+			p{
+				padding: 5px; 
+				font-weight: 800;
+			}
+			.img2{
+				margin-right:80px;
+				margin-left:50px;
+				width:200px;
+			}
+			footer{
+				border-top: 2px solid white;
+				width: 100%;
+				float: left;
+				color: white;
+				font-size: 20px
+			}
+			.footer-item{
+				float: left;
+				width: 33.3333%;
+				text-align: center;
+				padding: 20px 0;	
+			}
+		</style>
+		<title>Резюме</title>
 	</head>
 	<body>
-		<header class='menu'>
-			<ul>
-				<li><a href="1.html" class="button button1">Головна</a>
-				<li><a href="2.html" class="button button2">Галерея</a>
-			</ul>
-		</header>	
+		<header>
+			<nav  class='menu'>
+				<a href="1.html" class="button button1">Головна</a>
+				<a href="2.html" class="button button2">Галерея</a>
+			<nav>
+		</header>
+		
 		<main class="main_part">
-				<h1 align="center" class="name">Моя сторінка</h1>
+			<h1 align="center" class="name">Основна інформація</h1>
 
-				<img src="images.jfif" align="left" class="img2">
-				
-				<article>
-					<p>Ім'я:</p>
-					<p>Інформація про мене:</p>
-					<p>Вік:</p>
-					<p>Е-пошта:</p>
-				</article>
+			<img src="images.jfif" align="left" class="img2">
+			
+			<article>
+				<p>Ім'я:
+				<p>Інформація про мене:
+				<p>Вік:
+				<p>Е-пошта:
+			</article>
 		</main>
+		
+		<aside class="aside_menu">
+			<h2>Більше про мене</h3>
+			<ul>
+				<li><a href="">Моя освіта</a></li>
+				<li><a href="">Пройдені курси</a></li>
+				<li><a href="">Мої навики</a></li>
+				<li><a href="">Досвід роботи</a></li>
+			</ul>
+		</aside>
+		
 		<footer>
-			<div class='footer1'>Logo</div>
-			<div class='footer1'>&copy; Всі права захищено</div>
-			<div class='footer1'>mynew@gmail.com</div>
+			<div class='footer-item'>Logo</div>
+			<div class='footer-item'>&copy; Всі права захищено</div>
+			<div class='footer-item'>mynew@gmail.com</div>
 		</footer>
 	</body>
 </html>
