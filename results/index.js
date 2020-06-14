@@ -14,7 +14,7 @@ let pupils = [
 	{
         group: 'Сихів',
         name: 'Христина Ружила',
-        kurs: 'https://kookich022.github.io/contacty.html',
+        kurs: 'https://kookich022.github.io/index.html',
         mark: 100
     },
 	{
