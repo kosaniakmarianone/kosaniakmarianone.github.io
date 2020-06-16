@@ -3,7 +3,7 @@ let pupils = [
         group: 'Сихів',
         name: 'Олександр Завербний',
         kurs: 'https://mrsasha101.github.io/kurs/index.html',
-        mark: 95
+        mark: 100
     },
 	{
         group: 'Надія',
@@ -16,13 +16,6 @@ let pupils = [
         name: 'Христина Ружила',
         kurs: 'https://kookich022.github.io/index.html',
         mark: 100
-    },
-	{
-        group: 'Надія',
-        name: 'Василь Якубовський',
-        kurs: 'https://vasylyakubovski.github.io/test/1.html',
-        github: 'https://github.com',
-        mark: 80
     },
 	{
         group: 'Надія',
@@ -64,7 +57,7 @@ let pupils = [
         group: 'Сихів',
         name: 'Івасько Володимир',
         kurs: 'https://ivasko02.github.io/hhhhhhh.html',
-        mark: 'дописує'
+        mark: '80'
     },
 	{
         group: 'Надія',
