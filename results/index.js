@@ -33,19 +33,19 @@ let pupils = [
         group: 'Надія',
         name: 'Максимович Данило',
         kurs: 'https://danylogamer.github.io/%D1%82%D0%B5%D1%81%D1%82/index.html',
-        mark: 85
+        mark: 80
     },
 	{
         group: 'Надія',
         name: 'Максимович Дмитро',
-        kurs: 'https://danylogamer.github.io/%D1%82%D0%B5%D1%81%D1%82/index.html',
-        mark: 80
+        kurs: 'https://stalkeryoutube.github.io/test/index.html',
+        mark: 75
     },
 	{
         group: 'Надія',
         name: 'Якубовський Василь',
         kurs: 'https://vasylyakubovski.github.io/test/1.html',
-        mark: 85
+        mark: 80
     },
 	{
         group: 'Надія',
@@ -57,7 +57,7 @@ let pupils = [
         group: 'Сихів',
         name: 'Івасько Володимир',
         kurs: 'https://ivasko02.github.io/hhhhhhh.html',
-        mark: '80'
+        mark: 75
     },
 	{
         group: 'Надія',
@@ -126,6 +126,7 @@ function sort(type){
                     return -1
                 }
             });
+			pupils = pupils.sort( (a,b) => b.mark - a.mark);
             addInfo()
             break;
         case 'mark':
