@@ -1,0 +1,36 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.month{
+	max-width: 900px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.day{
+	width: 120px;
+	height: 100px;
+	background: lime;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 4px;
+	border-radius: 5px;
+	font-size: 24px;
+	box-shadow: 0 0 10px lightgray;
+	text-align: center;
+}
+
+.free{
+	background: lightgray;
+}
+
+.empty{
+	background: white;
+	border: 1px silid red;
+	box-sizing: border-box;
+}
