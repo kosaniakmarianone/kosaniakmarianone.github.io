@@ -1,0 +1,23 @@
+const all_orders = [
+	{
+		client_name: "Дмитро Іванов",
+		client_phone: "+3809781240",
+		order_name: "Iphone X",
+		order_price: "520",
+		order_status: true
+	},
+	{
+		client_name: "Тетяня Микитенко",
+		client_phone: "+3809646712",
+		order_name: "Клавіатура",
+		order_price: "60",
+		order_status: false
+	},
+	{
+		client_name: "Андірй Тарасенко",
+		client_phone: "+3809641412",
+		order_name: "Телефон Samsung",
+		order_price: "360",
+		order_status: true
+	}
+]

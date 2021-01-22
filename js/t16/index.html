@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тема 16. Завдання 1</title>
+    <style>
+        body{
+			font-family: sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			max-width: 1200px;
+			display: flex;
+			margin: 0 auto;
+		}
+		.sidebar{
+			color: white;
+			box-sizing: border-box;
+			width: 30%;
+			background: #1f479c;
+			padding: 10px 20px;
+			min-height: 100vh;
+			border-radius: 20px 0 0 0;
+		}
+		.form>div{
+			display: flex;
+			flex-direction: column;
+		}
+		.form div{
+			margin-bottom: 14px;
+		}
+		.form div label{
+			font-size: 18px;
+			margin: 4px 0;
+		}
+		.form div input{
+			height: 28px;
+			border-radius: 0px;
+			border: 2px solid gray;
+		}
+		.form_check{
+			flex-direction: row !important;
+			align-items: center;
+		}
+		.form_check_lable{ margin-left: 10px;}
+		.form_price{ max-width: 110px;}
+		.order_btn{
+			background: #c99400;
+			border: none;
+			padding: 16px;
+			font-size: 20px;
+			color:white;
+			border-radius: 5px;
+			font-weight: 600;
+			cursor: pointer;
+		}
+		.order_btn:hover{
+			opacity: 0.9;
+		}
+		
+		.content{
+			box-sizing: border-box;
+			background: #c1d3f5;
+			border-radius: 0 20px 0 0;
+			min-height: 100vh;
+			width: 70%;
+		}
+		table{
+			margin: 0 auto;
+			min-width: 94%;
+			border-spacing: 0px;
+		}
+		
+		tr:first-child td, th{
+			border-top: 1px solid black;
+		}
+		tr td:first-child, th:first-child{
+			border-left: 1px solid black;
+		}
+		tr td, th{
+			padding: 4px;
+			border-right: 1px solid black;
+			border-bottom: 1px solid black;
+		}
+		.centered{
+			text-align: center;
+			margin: 0 auto
+		}
+		th{
+			padding: 10px;
+		}
+		.del_btn{
+			background: red;
+			color: white;
+			border: 0;
+			padding: 6px 12px;
+			border-radius: 2px;
+			font-weight: 600;
+			cursor: pointer;
+		}
+		.del_btn:hover{
+			opacity: 0.8;
+		}
+		
+    </style>
+</head>
+<body>
+    
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="form">
+				<h3 align="center">Форма замовлення</h3>
+				<div>
+					<label>Ім'я замовника</label>
+					<input id="client_name" type="text">
+				</div>
+				<div>
+					<label>Телефон замовника</label>
+					<input id="client_phone" type="text">
+				</div>
+				<div>
+					<label>Назва товару</label>
+					<input id="order_name" type="text">
+				</div>
+				<div>
+					<label>Ціна товару</label>
+					<input id="order_price" type="number" min="0" class="form_price">
+				</div>
+				<div class="form_check">
+					<input id="order_status" type="checkbox" >
+					<label class="form_check_lable">Замовення підтверджено</label>
+				</div>
+				<div>
+					<button class="order_btn" onclick="addOrder()">Додати замовлення</button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="content">
+			<h2 align="center">Список замовлень</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Замовник</th>
+						<th>Телефон</th>
+						<th>Товар</th>
+						<th>Ціна</th>
+						<th>Виконано</th>
+						<th>Видалити</th>
+					</tr>
+				</thead>
+				
+				<tbody id="orders_table">
+					<tr>
+						<td>1</td>
+						<td>Дмитро Іванов</td>
+						<td>+3809781240</td>
+						<td>Iphone X</td>
+						<td class="centered">520$</td>
+						<td class="centered"><input type="checkbox" checked></td>
+						<td class="centered"><button class="del_btn">Видалити</button></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Тетяня Микитенко</td>
+						<td>+3809646712</td>
+						<td>Клавіатура</td>
+						<td class="centered">60$</td>
+						<td class="centered"><input type="checkbox"></td>
+						<td class="centered"><button class="del_btn">Видалити</button></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Андірй Тарасенко</td>
+						<td>+3809641412</td>
+						<td>Телефон Samsung</td>
+						<td class="centered">360$</td>
+						<td class="centered"><input type="checkbox" checked></td>
+						<td class="centered"><button class="del_btn">Видалити</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	
+	<script>
+		const all_orders = [
+			{
+				client_name: "Дмитро Іванов",
+				client_phone: "+3809781240",
+				order_name: "Iphone X",
+				order_price: "520",
+				order_status: true
+			},
+			{
+				client_name: "Тетяня Микитенко",
+				client_phone: "+3809646712",
+				order_name: "Клавіатура",
+				order_price: "60",
+				order_status: false
+			},
+			{
+				client_name: "Андірй Тарасенко",
+				client_phone: "+3809641412",
+				order_name: "Телефон Samsung",
+				order_price: "360",
+				order_status: true
+			}
+		]
+		const order = {
+			client_name: "",
+			client_phone: "",
+			order_name: "",
+			order_price: "",
+			order_status: false
+		}
+		function addOrder(){
+			order.client_name = document.getElementById("client_name").value;
+			order.client_phone = document.getElementById("client_phone").value;
+			order.order_price = document.getElementById("order_price").value;
+			order.order_name = document.getElementById("order_name").value;
+			order.order_status = document.getElementById("order_status").checked;
+			
+			all_orders.push(order);
+			drawOrders()
+			//console.log(order)
+		}
+		
+		function drawOrders(){
+			const orders_table = document.getElementById('orders_table');
+			let orders_html = ``;
+			if(all_orders.length === 0){orders_table.innerHTML = ``;}
+			for( i=0; i<all_orders.length; i++ ){
+				console.log(all_orders)
+				order_checked = ``;
+				if( all_orders[i].order_status ){ order_checked = `checked`}
+				
+				orders_html +=
+				`
+					<tr>
+						<td>${i+1}</td>
+						<td>${all_orders[i].client_name}</td>
+						<td>${all_orders[i].client_phone}</td>
+						<td>${all_orders[i].order_name}</td>
+						<td class="centered">${all_orders[i].order_price}</td>
+						<td class="centered"><input type="checkbox" ${order_checked}></td>
+						<td class="centered"><button class="del_btn" onclick="delOrder(${i})">Видалити</button></td>
+					</tr>
+				`;
+				
+				orders_table.innerHTML = orders_html;
+			}
+		}
+		
+		function delOrder(id){
+			all_orders.splice(id, 1);
+			console.log(all_orders)
+			drawOrders();
+		}
+		
+		drawOrders();
+		
+	</script>
+</body>
+</html>
