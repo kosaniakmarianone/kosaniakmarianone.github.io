@@ -1,0 +1,18 @@
+const users = [
+	{
+		name: "Олег",
+		email: "olegivanov@.gmail.com"
+	},
+	{
+		name: "Таня",
+		email: "taniavit@.gmail.com"
+	},
+	{
+		name: "Тарас",
+		email: "tarik95@.gmail.com"
+	},
+	{
+		name: "Оксана",
+		email: "oksana2002@.gmail.com"
+	}
+];
