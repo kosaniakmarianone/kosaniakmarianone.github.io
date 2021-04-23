@@ -1,0 +1,6 @@
+1 create .accordion //головний блок
+2           .accordion_item //елемент акордіону
+                .accordion_title //заголовок аккордіону
+                .accordion_body //блок з наповненням
+                    .accordion_content //текстове наповнення
+
