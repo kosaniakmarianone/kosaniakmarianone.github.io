@@ -1,0 +1,59 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+.box{
+    width: 600px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box h3{
+    font-size: 30px;
+}
+.box p{
+    font-size: 20px;
+}
+.slide:nth-child(1){
+    background: rgb(109, 170, 199)
+}
+.slide:nth-child(2){
+    background: rgb(79, 163, 79);
+}
+.slide:nth-child(3){
+    background: rgb(214, 214, 22);
+}
+
+.slide{
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slides{
+    display: flex;
+    overflow: hidden;
+    transition: margin .5s ease-in-out;
+}
+.slider{
+    width: 600px;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+}
+.slider-container{
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.arrow{
+    margin: 0 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+    font-weight: 800;
+    cursor: pointer;
+}
