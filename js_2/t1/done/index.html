@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Test</h1>
+    https://www.youtube.com/watch?v=UFLvSp4Mh9k&list=PL4cUxeGkcC9itfjle0ji1xOZ2cjRGY_WB&index=2
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    
+    <script type="module">
+        const firebaseConfig = {
+          apiKey: "AIzaSyA7KHlFAo8Qja8q9JjawiRmjbTfULRbg7U",
+          authDomain: "sl-t-20359.firebaseapp.com",
+          projectId: "sl-t-20359",
+          storageBucket: "sl-t-20359.appspot.com",
+          messagingSenderId: "166422962560",
+          appId: "1:166422962560:web:00984fbca2c4f4d1f1a165",
+          measurementId: "G-8RN120XBPZ"
+        };
+        console.log(firebase)
+        firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+        db.collection("users").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(`${doc.id} => ${doc.data()}`);
+            });
+        });
+
+      </script>
+      <script type="module">
+          db.getCollection('users')
+      </script>
+</body>
+</html>
