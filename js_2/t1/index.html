@@ -16,6 +16,9 @@
 			max-width: 900px;
 			border: 2px solid red;
 		}
+        xmp{ 
+            background: lightyellow;
+        }
     </style>
     <link rel="icon" href="../Untitled.png">
 </head>
@@ -41,13 +44,45 @@
 
     <h3>3. Збережіть у базі данних список користувачів з полями: <b>name</b>, <b>lastname</b>, <b>email</b>, <b>phone</b></h3>
 
-    <h3>4. Підключіть вашу базу данних до html-сторінки.</h3>
+    <h3>4. Підключіть вашу базу данних до html-сторінки. Використайте налаштування з вашої бази данних</h3>
 
+    <xmp>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+        <script>
+            const firebaseConfig = {
+            apiKey: "...",
+            authDomain: "...",
+            projectId: "...",
+            storageBucket: "...",
+            messagingSenderId: "...",
+            appId: "...",
+            measurementId: "...",
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            var db = firebase.firestore();
+        </script>
+    </xmp>
     <h3 align="center">
-        <img src="images/3.png" alt="" >
+        <img src="images/4.png" alt="" >
     </h3>
 
-    <h3>5. Отримайте данні з бази данних та виведіть їх на сторінку як таблицю.</h3>
+    <h3>5. Отримайте данні з бази данних та виведіть їх у консоль</h3>
    
+    <xmp>
+        <script>
+            db.collection("users").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(doc.data());
+                });
+            });
+        </script>
+    </xmp>
+
+    <h3>6. Збережіть файл з підключенням до firebase у окремий файл та використовуйте його у майбутнії завданнях.</h3>
+
+    <h3>7. Виведіть користувачів отриманих з бази данних у таблицю на вашій веб сторінці</h3>
 </body>
 </html>
