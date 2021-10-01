@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 25px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Request та Responce. Опрацювання данних отриманих від бази данних (.then(), .catch())</h1>
+
+    <h3>1. Створіть веб-сторінку та підключіть до неї firebase firestore окремим файлом.</h3>
+
+    <xmp>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+        <script>
+            const firebaseConfig = {
+            apiKey: "...",
+            authDomain: "...",
+            projectId: "...",
+            storageBucket: "...",
+            messagingSenderId: "...",
+            appId: "...",
+            measurementId: "...",
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            var db = firebase.firestore();
+        </script>
+    </xmp>
+
+    <h3>2. Додайте у базу данних декілька статтей в колекції <b>articles</b>. Статті зберігайте з такими ключами: <b>title</b>, <b>article</b>, <b>author</b></h3>
+
+    <h3 align="center">
+        <img src="1.png" alt="" >
+   </h3>
+
+    <h3>3. Показуйте на сторінці спінер доки данні не будуть завантаженні з бази данних.</h3>
+
+    <h3 align="center">
+        <img src="spiner.gif" alt="" >
+    </h3>
+
+    <h3>4. Приховайте спінер та відобразіть статті із бази данних коли вони завантажаться.</h3>
+
+    <h3 align="center">
+        <img src="2.png" alt="" >
+    </h3>
+</body>
+</html>
