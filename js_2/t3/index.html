@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 25px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Додавання нових данних у firebase</h1>
+
+    <h3>1. Створіть 2 веб-сторінки та підключіть до них firebase firestore окремим файлом.</h3>
+
+    <h3>2. Сторнки повинні мати форми для додавання нових об'єктів у firbase - user, article</h3>
+   
+    <h3 align="center">
+        <img src="1.png" alt="" >
+    </h3>
+
+    <h3 align="center">
+        <img src="2.png" alt="" >
+    </h3>
+    
+    <h3>3. Нові обєкти повинні містити ключі як об'єкти з попередніх завдань.</h3>
+
+    <h3> Article: <b>title</b>, <b>author</b>, <b>text</b>.</h3>
+
+    <h3> User: <b>name</b>, <b>lastName</b>, <b>email</b></h3>
+
+    <xmp>
+        <script>
+            // Додавання нового документу у firebase
+            db.collection("users").add({
+                name: "Taras",
+                lastName: "Milevich",
+                email: "taras@gmail.com"
+            });
+
+            // Aбо 
+
+            const user = {
+                name: "Taras",
+                lastName: "Milevich",
+                email: "taras@gmail.com"
+            }
+
+            db.collection("users").add(user)
+        </script>
+    </xmp> 
+    
+</body>
+</html>
