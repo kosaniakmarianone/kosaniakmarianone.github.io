@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 25px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Редагування та видалення документів у firebase (№ 1)</h1>
+
+    <h3>1. Виведіть у таблиці список користувачів у колекції 'users' в firebase</h3>
+
+    <h3 align="center">
+        <img src="1.png" alt="" >
+    </h3>
+
+    <h3>2. Створіть функцію <b>drawUser(user)</b> яка додаватиме користувача у талицю на вашій сторінці.</h3>
+
+    <h3>3. Покажіть у таблиці всі поля користувача та додайте напроти кнопку редагувати і видалити</h3>
+
+    <h3 align="center">
+        <img src="2.png" alt="" >
+    </h3>
+
+    <h3>4. Присвойте кожному рядку таблиці атрибуй id який буде рівний id користувача у firebase</h3>
+
+    <h3 align="center">
+        <img src="3.png" alt="" >
+    </h3>
+    
+    <h3 align="center">
+        <img src="4.png" alt="" >
+    </h3>
+
+    <h3>5. Створіть функцію <b>deleteDoc(id)</b> яка приматиме id документа та видалятиме його</h3>
+
+    <xmp>
+        <script>
+            // Видалення документу у firebase по id
+            db.collection("users").doc(id).delete();
+
+            // Можна відслідковувати заверешення операції видалення
+            db.collection("users").doc(id).delete().then( function(){
+                // дії після видалення
+                console.log("Document deleted!")
+            });
+        </script>
+    </xmp> 
+
+    <h3>5. Привяжіть до кожної кнопки 'видалити' подію <b>click</b> при якій спрацьовуватиме функція deleteDoc(id). У пареметр id передавайте id рядка у якому знаходиться кнопка.</h3>
+
+    <h3>6. Після видалення видаляйте рядок із таблиці</h3>
+
+</body>
+</html>
