@@ -25,41 +25,46 @@
 <body>
     <h1>Request та Responce. Опрацювання данних отриманих від бази данних (.then(), .catch())</h1>
 
-    <h3>1. Створіть веб-сторінку та підключіть до неї firebase firestore окремим файлом.</h3>
+    <h3>1. Створіть окремий файл у папці firebase з конфігурацією вашої бази данних.</h3>
+
+    <xmp>
+        // Файл index.js у папці firebase
+        const firebaseConfig = {
+        apiKey: "...",
+        authDomain: "...",
+        projectId: "...",
+        storageBucket: "...",
+        messagingSenderId: "...",
+        appId: "...",
+        measurementId: "...",
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+    </xmp>
+
+    <h3>2. Створіть веб-сторінку та підключіть до неї firebase firestore.</h3>
 
     <xmp>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
-        <script>
-            const firebaseConfig = {
-            apiKey: "...",
-            authDomain: "...",
-            projectId: "...",
-            storageBucket: "...",
-            messagingSenderId: "...",
-            appId: "...",
-            measurementId: "...",
-            };
-
-            firebase.initializeApp(firebaseConfig);
-
-            var db = firebase.firestore();
-        </script>
+        <script src="../firebase/index.js"></script>
     </xmp>
 
-    <h3>2. Додайте у базу данних декілька статтей в колекції <b>articles</b>. Статті зберігайте з такими ключами: <b>title</b>, <b>article</b>, <b>author</b></h3>
+    <h3>3. Додайте у базу данних декілька статтей в колекції <b>articles</b>. Статті зберігайте з такими ключами: <b>title</b>, <b>article</b>, <b>author</b></h3>
 
     <h3 align="center">
         <img src="1.png" alt="" >
    </h3>
 
-    <h3>3. Показуйте на сторінці спінер доки данні не будуть завантаженні з бази данних.</h3>
+    <h3>4. Показуйте на сторінці спінер доки данні не будуть завантаженні з бази данних.</h3>
 
     <h3 align="center">
         <img src="spiner.gif" alt="" >
     </h3>
 
-    <h3>4. Приховайте спінер та відобразіть статті із бази данних коли вони завантажаться.</h3>
+    <h3>5. Приховайте спінер та відобразіть статті із бази данних коли вони завантажаться.</h3>
 
     <h3 align="center">
         <img src="2.png" alt="" >

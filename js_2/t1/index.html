@@ -73,8 +73,8 @@
    
     <xmp>
         <script>
-            db.collection("users").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+            db.collection("users").get().then(function(responce) {
+                responce.forEach(function(doc) {
                     console.log(doc.data());
                 });
             });
