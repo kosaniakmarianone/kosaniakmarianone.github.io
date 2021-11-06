@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <xmp>
+        <script>
+            let user;
+            db.collection("users").where("email", "==", "test@gmail.com")
+            .get()
+            .then((res) => {
+                res.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    user = {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+                    console.log(doc.id, " => ", doc.data());
+                });
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
+        </script>
+    </xmp>
+</body>
+</html>
