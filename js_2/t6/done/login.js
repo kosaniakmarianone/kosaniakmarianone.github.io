@@ -16,4 +16,5 @@ function login(){
             console.log(user)
         });
     })
+    .catch(err=>console.log(err))
 }
