@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Car{
     constructor(name, year, speed, price){
         this.name = name;
@@ -12,6 +13,5 @@ class Car{
 }
 
 let car_1 = new Car("car11", 20, 120, 15000);
-
 
 console.log(car_1.displayName());
