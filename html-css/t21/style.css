@@ -7,7 +7,7 @@ input:focus{
 	border:3px solid lime; 
 	border-radius: 4px;}
 
-header{background: linear-gradient(to right,whitesmoke,white,blue);padding: 10px;}
+header{background-image: radial-gradient(ellipse,#2A308B,#000 62%)!important;padding: 10px;}
 .button1,.button2{margin-left: 10px;text-decoration: none;}
 .button1:hover,.button2:hover{color:red;}
 .button2{margin-left: 10px;}
