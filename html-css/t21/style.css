@@ -1,5 +1,7 @@
-body{background: blue; color:white; font-family: cursive; margin:0;}
+body{background-image: radial-gradient(ellipse,#2A308B,#000 62%)!important;color:white; font-family: cursive; margin:0;min-height: 100vh}
+main{padding: 0 30px;}
 input{padding: 5px;}
+
 
 input:invalid{background: #ff2e2e;}
 input:valid{background: #1df000;}
@@ -7,7 +9,7 @@ input:focus{
 	border:3px solid lime; 
 	border-radius: 4px;}
 
-header{background: linear-gradient(to right,whitesmoke,white,blue);padding: 10px;}
+header{background: linear-gradient(to right, white, white, #2A308B);padding: 10px;}
 .button1,.button2{margin-left: 10px;text-decoration: none;}
 .button1:hover,.button2:hover{color:red;}
 .button2{margin-left: 10px;}
