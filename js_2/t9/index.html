@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 25px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Сучасні методи розробки. Введення у vue.js</h1>
+
+    <h3>1. Пройдіть вступ із <a href="https://v3.vuejs.org/guide/installation.html" target="_blank">офіційної документації vue.js</a> .</h3>
+
+    <h3>2. Розберіть пункти <b>Installation</b> та <b>Introduction</b>.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+
+    <h3>3. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js всіх юзерів із бази данних.</h3>
+
+    <xmp>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+        <script>
+            const firebaseConfig = {
+                apiKey: "...",
+                authDomain: "...",
+                projectId: "...",
+                storageBucket: "...",
+                messagingSenderId: "...",
+                appId: "...",
+                measurementId: "..."
+            };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+            var db = firebase.firestore();
+        </script>
+    </xmp>
+
+    <h3>4. По кліку на кожного юзера виводьте в alert повну інформацію про нього.</h3>
+</body>
+</html>
