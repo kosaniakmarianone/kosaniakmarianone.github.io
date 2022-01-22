@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 25px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Практикування vue.js №1</h1>
+
+    <h3>1. За допомогою vue.js створіть сторінку з картками для товарів.</h3>
+
+    <xmp>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/vue@next"></script>
+            </head>
+        <body>
+            <div id="app">
+                <p>{{ message }}</p>
+                <card-product
+                    v-for="item in products"
+                    v-bind:todo="item"
+                    v-bind:key="item.id"
+                ></card-product>
+            </div>
+            <script src="main.js"></script>
+        </body>
+        </html>
+    </xmp>
+
+    <h3>2. Використайте для додавання картки темплейт. Приклад зі <a href="https://v3.vuejs.org/guide/introduction.html#composing-with-components">офіційної документаці</a></h3>
+
+    <xmp>
+        <div class="card" style="width: 18rem;">
+            <img 
+                src="https://cdn.comfy.ua/media/catalog/product/a/p/apple_iphone_11_64gb_black_0_3.jpg" 
+                class="card-img-top" 
+                alt="..."
+                style="max-height: 300px; width: fit-content;margin: 0 auto;">
+            <div class="card-body">
+                <h5 class="card-title">Iphone 11</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="d-flex justify-content-between">
+                  <span>Price:</span>
+                  <span>700$</span>
+                </p>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+        </div>
+    </xmp>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+
+
+    <h3>4. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js товари із бази данних.</h3>
+
+    <xmp>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+        <script>
+            const firebaseConfig = {
+                apiKey: "...",
+                authDomain: "...",
+                projectId: "...",
+                storageBucket: "...",
+                messagingSenderId: "...",
+                appId: "...",
+                measurementId: "..."
+            };
+    
+            firebase.initializeApp(firebaseConfig);
+    
+            var db = firebase.firestore();
+        </script>
+    </xmp>
+</body>
+</html>
