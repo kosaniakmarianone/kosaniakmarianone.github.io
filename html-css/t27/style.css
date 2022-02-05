@@ -1,8 +1,9 @@
 body{
     margin: 0;
     padding: 0;
-	background-color: rgb(20, 20, 20);
-	color: white;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-family: sans-serif;
 }
 .menu{
     padding: 20px;
@@ -14,7 +15,6 @@ body{
     color: white;
     margin-right: 30px;
     font-size: 20pt;
-    font-family: 'Cuprum', sans-serif;
 }
 .header{
     width: 100%;
@@ -31,7 +31,6 @@ body{
     box-sizing: border-box;
     opacity: 0.8;
     display: flex;
-    font-family: 'Pacifico', cursive;
     justify-content: space-between;
 }
 .left{
@@ -60,7 +59,6 @@ article>h1{
     background-color: #414142;
     padding: 10px;
     font-size: 22pt;
-    font-family: 'Cuprum', sans-serif;
 }
 article>p{
     font-size: 16pt
@@ -81,7 +79,6 @@ input[type=text]{
     text-decoration: none;
     color: white;
     border-radius: 5px;
-    font-family: 'Cuprum', sans-serif;
 }
 .search>a:hover{
     background-color: blue;
@@ -89,13 +86,10 @@ input[type=text]{
 li{
     font-size: 14pt
 }
-.lists>h2{
-    font-family: 'Cuprum', sans-serif;
-}
+
 ul>a{
     text-decoration: none;
     color: white;
-    font-family: 'Cuprum', sans-serif;
 }
 ul>a:hover{
     text-decoration: underline;
