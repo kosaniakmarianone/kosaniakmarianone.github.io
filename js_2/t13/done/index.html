@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container{
+            padding: 50px 0;
+        }
+        .card{
+            width: 24rem;
+            padding: 1rem;
+        }
+        .card p{
+            font-size: 20px;
+        }
+        input[type="number"], input[type="color"]{
+            width: 100px;
+        }
+        .card img{
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container">
+        <div id="app">
+            <h1 class="text-center mb-5">Замовляй оптом</h1>
+
+            <div class="d-flex justify-content-between flex-wrap">
+                
+                <card :product="products[0]"></card>
+            </div>
+        </div>
+        
+    </div>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async function(){
+            let text = await axios.get("my-template.html");
+
+            const test =  {
+                message: 'Hello Vue.js!',
+                test: 0,
+                products: [
+                    {name: 'one'}
+                ]
+            };
+
+            const CardProduct = {
+                props: ['product'],
+                template: `${text.data}`,
+                methods: {
+                    testClick(data){
+                    data.name = 'one';
+                    test.test++;
+                    console.log('test click ', test.test)
+                    }
+                }
+            };
+
+            const app = {
+                data() {
+                    return test
+                },
+                methods: {
+                    test() {
+                    this.message = 3
+                    } 
+                },
+                components: {
+                    'card': CardProduct
+                }
+            }
+            Vue.createApp(app).mount('#app');
+        })
+    </script>
+</body>
+</html>
