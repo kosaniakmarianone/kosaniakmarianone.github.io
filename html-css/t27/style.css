@@ -40,7 +40,6 @@ body{
 .right{
     color: white;
     font-size: 16pt;
-    font-weight: 900;
 }
 .main{
     display: flex;
