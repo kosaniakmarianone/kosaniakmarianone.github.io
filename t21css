@@ -1,0 +1,43 @@
+body{
+    background-color: black;
+}
+.clock{
+    width: 200px;
+    height: 200px;
+    border: 8px solid white;
+    margin: 100px auto;
+    border-radius: 50%;
+    position: relative;
+}
+.dot{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: aqua;
+    position: absolute;
+    top:  calc(50% - 15px);
+    left: calc(50% - 15px);
+}
+
+.digit{
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+}
+
+.one{
+    top: 0;
+    left: calc(50% - 14px);
+}
+.three{
+    right: 0;
+    top: calc(50% - 14px);
+}
+.six{
+    bottom: 0;
+    left: calc(50% - 8px);
+}
+.nine{
+
+}
