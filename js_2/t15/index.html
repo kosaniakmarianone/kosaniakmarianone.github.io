@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Підготовка до курсової роботи. Авторизація у firebase за допомогою google</h1>
+
+    <h3>1. За допомогою vue.js створіть single-page application.</h3>
+
+    <xmp>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/vue@next"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <link rel="stylesheet" href="styles/home.css">
+            <link rel="stylesheet" href="styles/404.css">
+        </head>
+        <body>
+            <div class="container">
+                <div id="app">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Navbar</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#/">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#/products">Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#/orders">Orders</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#/not-found">Not Found</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <component :is="currentView" />
+                </div>        
+            </div>
+
+            <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+                    <script>
+                        const firebaseConfig = {
+                            apiKey: "...",
+                            authDomain: "...",
+                            projectId: "...",
+                            storageBucket: "...",
+                            messagingSenderId: "...",
+                            appId: "...",
+                            measurementId: "..."
+                        };
+                
+                        firebase.initializeApp(firebaseConfig);
+                
+                        var db = firebase.firestore();
+                    </script>
+            <script src="main.js"></script>
+        </body>
+        </html>
+    </xmp>
+    
+    <h3>Створіть декілька папок та файлів за даним прикладом.</h3>
+
+    
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+        <img src="2.png"  alt="" >
+    </h3>
+
+    <h3>2. Використайте для вибору плану темплейт. Приклад темплейту зі <a href="https://v3.vuejs.org/guide/introduction.html#composing-with-components" target="_blank">офіційної документаці</a>.</h3>
+
+    <hr>
+    <h3 align="center">Компонентa Home</h3>
+    <p>html для home.html (компоненти Home)</p>
+    <xmp>
+        <div class="home">
+            <div class="home_header d-flex justify-content-center align-items-center">
+                <div class="text-center">
+                    <h1 class="text-center">EnterShoop</h1>
+                    <p>Make your orders in minutes</p>
+                </div>
+            </div>
+            
+        </div>
+    </xmp>
+
+    <p>Стилі для компоненти Home</p>
+    <xmp>
+        <style>
+            .home_header{
+                height: 400px;
+            }
+            .home_header h1{
+                font-size: 5rem;
+            }
+
+            .home_header p{
+                margin-top: 30px;
+                font-size: 1.2rem;
+            }
+        </style>
+    </xmp>
+
+    <hr>
+    <h3 align="center">Компонентa NotFound</h3>
+
+    <p>html для 404.html (компоненти NotFound)</p>
+
+    <xmp>
+        <div class="d-flex justify-content-center align-items-center not-found">
+            <div class="text-center">
+                <p class="text-404">404</p>   
+                <p>Page not found</p>
+            </div>
+        </div>
+    </xmp>
+
+    <p>Стилі для компоненти NotFound</p>
+
+    <xmp>
+        <style>
+            .not-found{
+                height: 60vh;
+            }
+            .not-found p{
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            .text-404{
+                font-size: 4rem!important;
+            }
+        </style>
+    </xmp>
+
+    <hr>
+
+    <h3>
+        3. Завантажуйте темплейти за допомогою <a href="https://axios-http.com/docs/intro">axios.js</a>
+    </h3>
+
+    <p>Приклад завантаження файлу за допомогою axios:</p>
+
+    <xmp>
+        <script>
+            document.addEventListener('DOMContentLoaded', async function(){
+                let text = await axios.get("folder/my-template.html");
+                
+                console.log(text);
+                console.log(text.data);
+            })
+        </script>
+    </xmp>
+
+    <h3>
+        4. Використайте routing від vue.js для створення SPA
+    </h3>
+
+    <p>Приклад routing:</p>
+
+    <xmp>
+        <script>
+            document.addEventListener('DOMContentLoaded', async function(){   
+
+                let home = await axios.get("templates/home.html");
+                let notfound = await axios.get("templates/404.html");
+
+                const data =  {
+                    message: 'Hello Vue.js!',
+                    currentPath: window.location.hash,
+                };
+
+                const Home = {
+                    template: home.data,
+                };
+
+                const NotFound = {
+                    template: notfound.data
+                };
+
+                const routes = {
+                    '/': Home,
+                    '/home': Home,
+                    '/not-found': NotFound,
+                }
+
+                const app = {
+                    data() {  return data },
+                    methods: { },
+                    components: { },
+                    computed: {
+                        currentView() {
+                            return routes[this.currentPath.slice(1) || '/'] || NotFound
+                        }
+                    },
+                    mounted() {
+                        window.addEventListener('hashchange', () => {
+                            this.currentPath = window.location.hash
+                        })
+                    }
+                }
+                Vue.createApp(app).mount('#app');
+            })
+        </script>
+    </xmp>
+
+    <h3>5. Прикладом існуючих темплейтів додайте нові: Products та Orders. </h3>
+    
+    <h3 align="center">
+        <img src="3.png"  alt="" >
+    </h3>
+
+    <h3>6. Інформацію про товари та замовлення отримуйте з відповідних колекцій у firebase. </h3>
+    
+    <h3>7. Виводьте товари (темплейт Products) як картки як у попередньому завданні. </h3>
+    
+    <h3>8. Для замовлень створіть таблицю.</h3>
+</body>
+</html>
