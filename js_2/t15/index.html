@@ -58,15 +58,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" aria-current="page" href="#/">Home</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#/products">Products</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#/orders">Orders</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#/not-found">Not Found</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -77,22 +68,22 @@
             </div>
 
             <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
-                    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
-                    <script>
-                        const firebaseConfig = {
-                            apiKey: "...",
-                            authDomain: "...",
-                            projectId: "...",
-                            storageBucket: "...",
-                            messagingSenderId: "...",
-                            appId: "...",
-                            measurementId: "..."
-                        };
-                
-                        firebase.initializeApp(firebaseConfig);
-                
-                        var db = firebase.firestore();
-                    </script>
+            <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+            <script>
+                const firebaseConfig = {
+                    apiKey: "...",
+                    authDomain: "...",
+                    projectId: "...",
+                    storageBucket: "...",
+                    messagingSenderId: "...",
+                    appId: "...",
+                    measurementId: "..."
+                };
+        
+                firebase.initializeApp(firebaseConfig);
+        
+                var db = firebase.firestore();
+            </script>
             <script src="main.js"></script>
         </body>
         </html>
@@ -141,37 +132,6 @@
     </xmp>
 
     <hr>
-    <h3 align="center">Компонентa NotFound</h3>
-
-    <p>html для 404.html (компоненти NotFound)</p>
-
-    <xmp>
-        <div class="d-flex justify-content-center align-items-center not-found">
-            <div class="text-center">
-                <p class="text-404">404</p>   
-                <p>Page not found</p>
-            </div>
-        </div>
-    </xmp>
-
-    <p>Стилі для компоненти NotFound</p>
-
-    <xmp>
-        <style>
-            .not-found{
-                height: 60vh;
-            }
-            .not-found p{
-                font-size: 2rem;
-                font-weight: bold;
-            }
-            .text-404{
-                font-size: 4rem!important;
-            }
-        </style>
-    </xmp>
-
-    <hr>
 
     <h3>
         3. Завантажуйте темплейти за допомогою <a href="https://axios-http.com/docs/intro">axios.js</a>
@@ -212,14 +172,9 @@
                     template: home.data,
                 };
 
-                const NotFound = {
-                    template: notfound.data
-                };
-
                 const routes = {
                     '/': Home,
-                    '/home': Home,
-                    '/not-found': NotFound,
+                    '/home': Home
                 }
 
                 const app = {
@@ -242,16 +197,34 @@
         </script>
     </xmp>
 
-    <h3>5. Прикладом існуючих темплейтів додайте нові: Products та Orders. </h3>
+    <h3>5. Додайте авторизацію через google від firebase. </h3>
     
     <h3 align="center">
         <img src="3.png"  alt="" >
     </h3>
+    <h3 align="center">
+        <img src="4.png"  alt="" >
+    </h3>
+    <h3 align="center">
+        <img src="5.png"  alt="" >
+    </h3>
 
-    <h3>6. Інформацію про товари та замовлення отримуйте з відповідних колекцій у firebase. </h3>
-    
-    <h3>7. Виводьте товари (темплейт Products) як картки як у попередньому завданні. </h3>
-    
-    <h3>8. Для замовлень створіть таблицю.</h3>
+    <h3>6. Створіть метод для опрацювання авторизації та привяжіь його до кнопки. </h3>
+
+
+    <xmp>
+        <script>
+            googleAuth(){
+                firebase.auth()
+                .signInWithPopup(provider)
+                .then( result => {
+                    console.log(result)
+                })
+                .catch( error => {
+                    console.log(error)
+                });
+            } 
+        </script>
+    </xmp>
 </body>
 </html>
