@@ -26,17 +26,35 @@
     <h1>Курсова робота. Авторизація у firebase за допомогою email та паролю.</h1>
 
     <h3>1. Додайте логін за допомогою <a href="https://firebase.google.com/docs/auth/web/password-auth#create_a_password-based_account">email та password</a>.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+        <img src="2.png"  alt="" >
+    </h3>
     
     <h3>2. Додайте <b>Log out</b>. Оновлюйте відображення змін автоматично по мірі отримання інформаці.</h3>
 
     <xmp>
         <script>
-            //оновлення сторінки після оновлення state для spa
-            //можна викликати у методах компонент
+            /*
+                Оновлення сторінки після оновлення state для spa
+                Можна викликати у методах компонент
+            */
+
             this.$root.$forceUpdate();
+
+            /*
+                Як отримати авторизованого користувача
+            */
+
+            const user = firebase.auth().currentUser;
         </script>
     </xmp>
 
+    <h3 align="center">
+        <img src="3.png"  alt="" >
+        <img src="4.png"  alt="" >
+    </h3>
 
     <h3>3. Додайте у firebase пошти користувачів у яких буде доступ типу адмін.</h3>
 </body>
