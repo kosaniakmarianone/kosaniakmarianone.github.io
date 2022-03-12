@@ -74,52 +74,22 @@ const products = [
 
 
 ]
-const data = {
-    message:'Hello vue.js',
-    products : []
-}
 
 const CardTemplete = {
     props:['product'],
-        template:
+    template: 
     `
     <h1>Card</h1>
+    <h2>Card info</h2>
     `,
     methods:{
-        
         addToCart(product){
             product.added = true;
-            console.log('added product', product.id);
         }
     }
 }
 
-const app = {
-    data(){
-        return data
-    },
-    components: {
-        'card': CardTemplete
-    },
-    methods:{
-        getProductsFromDb(){
 
-            db.collection('products')
-            .get()
-            .then(doc => {
-                doc.forEach(element => {
-                    this.products.push(element.data())
-                    console.log(data)
-                });
-            })
-        }
-    },
-    created: function(){
-        this.getProductsFromDb()
-        console.log(2)
-    }
-    
-}
 document.addEventListener('DOMContentLoaded', async function(){   
     //витягуємо темплейти
     let home = await axios.get("templates/home.html");
@@ -131,17 +101,33 @@ document.addEventListener('DOMContentLoaded', async function(){
         currentPath: window.location.hash,
         user: {},
         signIn: false,
-        logged: true
+        logged: true,
+        products: []
     };
 
     //Components
     const Home = {
+        props: ['products'],
         template: home.data,
     };
 
+    const CardTemplete = {
+        props: ['product'],
+        template: 
+        `
+        <h1>Card</h1>
+        <h2>Card info</h2>
+        `,
+        methods:{
+            addToCart(product){
+                product.added = true;
+            }
+        }
+    }
+
     const Login = {
         template: login.data,
-         methods: {
+        methods: {
             googleAuth(){
                 console.log("click");
                
@@ -196,11 +182,11 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(errrorMessage);
                     // ..
                 });
-            },signInWithPassword(){
+            },
+            signInWithPassword(){
                 const email = document.getElementById("user-email").value;
                 const password = document.getElementById("user-password").value;
-                console.log(email)
-;
+                console.log(email);
                 console.log(password);
 
                 firebase.auth().signInWithEmailAndPassword(email, password)
@@ -225,8 +211,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(errorMessage);
                 });
             }
-           
-         }
+        }
     };
     
     //Routs(які компоненти відображати)
@@ -249,10 +234,21 @@ document.addEventListener('DOMContentLoaded', async function(){
                     // An error happened.
                     console.log(error);
                   });
+            },
+            getProductsFromDb(){
+                db.collection('products')
+                .get()
+                .then(doc => {
+                    doc.forEach(element => {
+                        this.products.push(element.data());
+                        console.log(this.products)
+                        console.log(element.data())
+                    });
+                })
             }
          },
         components: {
-
+            'card': CardTemplete
         },
         computed: {
             currentView() {
@@ -263,8 +259,10 @@ document.addEventListener('DOMContentLoaded', async function(){
             window.addEventListener('hashchange', () => {
                 this.currentPath = window.location.hash
             })
-            
+        },
+        created: function(){
+            this.getProductsFromDb()
         }
     }
     Vue.createApp(app).mount('#app');
-})
+});

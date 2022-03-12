@@ -5,4 +5,14 @@
             <p>Make your orders in minutes</p>
         </div>
     </div> 
+    <div>
+        <h1>Home products</h1>
+        {{ products?.length }}
+        <card 
+            v-if="products?.length > 0"
+            v-for="product in products"
+            :product="product"
+            :key='product.id'
+        ></card>
+    </div>
 </div> 

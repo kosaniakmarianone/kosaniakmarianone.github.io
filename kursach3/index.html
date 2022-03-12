@@ -16,14 +16,6 @@
             <link rel="stylesheet" href="styles/login.css">
         </head>
         <body>
-            <div id="app">
-                <div class="d-flex justify-content-between flex-wrap mt-3 px-2">
-                <card
-                v-for='product in products'
-                :product="product"
-                :key='product.id'
-                ></card>
-            </div>
             <div class="container">
                 <div id="app">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,7 +41,10 @@
                         </div>
                     </nav>
 
-                    <component :is="currentView" :signIn='signIn'/>
+                    <component 
+                        :is="currentView" 
+                        :signIn="'test'" 
+                        :products="products"/>
                 </div>        
             </div>
 
