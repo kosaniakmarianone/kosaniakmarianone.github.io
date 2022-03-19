@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Курсова робота. Додвання компонент для адміністрування сайту</h1>
+
+    <h3>1. Додайте нову компоненту <b>AddPoduct</b> для додавання нового товару від імені адміна.</h3>
+
+    <h3 align="center">Компонентa AddPoduct</h3>
+    <p>html для addPoduct.html (компоненти AddPoduct)</p>
+    <xmp>
+        <div class="addProduct">
+            
+        </div>
+    </xmp>
+
+    <p>Стилі для компоненти AddPoduct</p>
+    <xmp>
+        <style>
+            .addProduct{
+
+            }
+        </style>
+    </xmp>
+    
+    <h3>2. Відображайте пункт "Add product" у меню тілкьки якщо користувач із правами адімністратора.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+
+    <h3>
+        3. Створіть форму для додавання товару у базу данних в залежності від виду товару. Товар повинен мати обов'язково такі пункти:
+        <ol>
+            <li>Назва товару</li>
+            <li>Ціна товару</li>
+            <li>Фото товару</li>
+        </ol>
+        <br>
+        Інші пункти в залежності від товару.
+    </h3>
+
+    <h3>
+        4. Товари зберігайте у firebase.
+    </h3>
+
+    <xmp>
+        <script>
+            //приклад додавання об'єкту у firebase
+            db.collection("products")
+            .add({
+                name: "New product name",
+                price: 200,
+                logo: "https://logo.addres.com",
+            })
+            .then(() => console.log('product added to db'))
+        </script>
+    </xmp>  
+
+    <h3>
+        5. Стовріть метод який буде витягувати усі товари з firebase та зберігає їх у пам'яті вашої <b>SPA</b>. Викликайте його після додавання нового товару. 
+    </h3>
+</body>
+</html>
