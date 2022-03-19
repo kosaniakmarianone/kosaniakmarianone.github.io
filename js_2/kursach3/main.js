@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     //витягуємо темплейти
     let home = await axios.get("templates/home.html");
     let login = await axios.get("templates/login.html");
+    let addProduct = await axios.get("templates/addProduct.html");
 
     //Основна інформація для spa (сайту)
     const data =  {
@@ -10,7 +11,13 @@ document.addEventListener('DOMContentLoaded', async function(){
         currentPath: window.location.hash,
         user: {},
         signIn: false,
-        logged: false
+        logged: false,
+        admin: false,
+        newProduct: {
+            name:"",
+            imageUrl: "",
+            price: 0
+        }
     };
 
     //Компоненти
@@ -39,6 +46,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                     this.$root.$forceUpdate();
                     window.location.hash = "/home";
 
+                    this.checkAdmin(user.email);
                     console.log(new_user);
                 })
                 .catch( error => {
@@ -66,6 +74,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                     this.$root.$forceUpdate();
                     window.location.hash = "/home";
 
+                    this.checkAdmin(user.email);
                     console.log(new_user);
                 })
                 .catch((error) => {
@@ -93,8 +102,9 @@ document.addEventListener('DOMContentLoaded', async function(){
                     data.user = new_user;
                     data.logged = true;
                     this.$root.$forceUpdate();
-                    window.location.hash = "/home"
+                    window.location.hash = "/home";
 
+                    this.checkAdmin(user.email);
                     console.log(new_user);
                 })
                 .catch((error) => {
@@ -103,15 +113,53 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(errorCode);
                     console.log(errorMessage);
                 });
+            },
+            checkAdmin(email){
+                db.collection("admins")
+                .get()
+                .then( res => {
+                    const adminEmails = [];
+                    res.forEach( e => adminEmails.push(e.data().email) );
+
+                    if(adminEmails.includes(email)){
+                        data.admin = true;
+                        this.$root.$forceUpdate();
+                        console.log("Welcome Admin!!!");
+                    }
+                    else if(data.admin == true){
+                        data.admin = false;
+                        this.$root.$forceUpdate();
+                    }
+                })
+                console.log("Check for admin!", email)
             }
         }
     };
+
+    const AddProduct = {
+        template: addProduct.data,
+        props: ['newProduct'],
+        methods: {
+            addProductToDB(){
+                const newProduct = {
+                    name: document.getElementById('product_name').value,
+                    url: document.getElementById('product_img').value,
+                    price: document.getElementById('product_price').value
+                }
+
+                db.collection("products")
+                .add(newProduct)
+                .then(() => console.log('product added to db'))
+            }
+        } 
+    }
 
     //Роути (які копоненти відображати)
     const routes = {
         '/': Home,
         '/home': Home,
-        '/login': Login
+        '/login': Login,
+        '/addproduct': AddProduct
     }
 
     const app = {
@@ -120,6 +168,7 @@ document.addEventListener('DOMContentLoaded', async function(){
             logOut(){
                 firebase.auth().signOut().then(() => {
                     data.logged = false;
+                    data.admin = false;
                     this.$forceUpdate();
                     window.location.hash = "/login";
                 }).catch((error) => {
