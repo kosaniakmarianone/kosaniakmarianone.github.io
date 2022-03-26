@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Курсова робота. Додвання компонент для адміністрування сайту №2. Відображення та редагування товарів.</h1>
+
+    <h3>1. Додайте новий пункт у меню <b>All products</b> доступний лише для адміна.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+
+    <h3>2. Додайте нову компоненту <b>ProductCard</b> для відображення усіх товарів.</h3>
+
+    <h3 align="center">Компонентa ProductCard</h3>
+    <p>html для productCard.html (компоненти ProductCard)</p>
+    <xmp>
+        <div class="card productCard">
+            <div class="row">
+                <h2 class="text-center">Футболки</h2>
+                <p class="d-flex justify-content-center">
+                    <img src="https://talant.shop/static/items/2019/November/5dbc31ea8c52ab6209a6d122-medium.jpg" alt="">
+                </p>
+                <p class="d-flex justify-content-between">
+                    <span> Кількість:</span>
+                    <span>110</span>
+                </p>
+                <p class="d-flex justify-content-between">
+                   <span>Вартість: </span>
+                   <span>20$</span>
+                </p>
+            </div>
+        </div>
+    </xmp>
+
+    <p>Стилі для компоненти ProductCard</p>
+    <xmp>
+        <style>
+            .card{
+                width: 24rem;
+                padding: 1rem;
+                margin-bottom: 40px;
+            }
+            .card p{
+                font-size: 20px;
+            }
+            .card img{
+                width: 50%;
+                margin: 0 auto;
+            }
+        </style>
+    </xmp>
+    
+    <h3>2. Відображайте всі товари на вкладці "All products" у меню.</h3>
+
+    <h3 align="center">
+        <img src="2.png"  alt="" >
+    </h3>
+
+    <h3>3. Додайте можливість видалити вибраний товар.</h3>
+   <br><br><br><br>
+</body>
+</html>
