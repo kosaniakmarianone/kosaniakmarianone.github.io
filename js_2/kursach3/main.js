@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', async function(){
     let home = await axios.get("templates/home.html");
     let login = await axios.get("templates/login.html");
     let addProduct = await axios.get("templates/addProduct.html");
+    let allProducts = await axios.get("templates/allProducts.html");
+    let productCard = await axios.get("templates/productCard.html");
 
     //Основна інформація для spa (сайту)
     const data =  {
@@ -13,11 +15,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         signIn: false,
         logged: false,
         admin: false,
-        newProduct: {
-            name:"",
-            imageUrl: "",
-            price: 0
-        }
+        newProductImage: "",
+        products: []
     };
 
     //Компоненти
@@ -154,12 +153,52 @@ document.addEventListener('DOMContentLoaded', async function(){
         } 
     }
 
+    const ProductCard = {
+        name: "product-card",
+        template: productCard.data,
+        props: ['product'],
+        methods: {
+            deleteProduct(id){
+                console.log(id);
+            }
+        }
+    }
+
+    const AllProducts = {
+        template: allProducts.data,
+        methods: {
+            getAllProducts(){
+                console.log("GET ALL PRODUCTS!!!!");
+                db.collection("products")
+                .get()
+                .then( res => {
+                    res.forEach( element => {
+                        const product = {
+                            ...element.data(),
+                            id: element.id
+                        };
+                        data.products.push(product)
+                    })
+                    console.log(data.products);
+                    this.$forceUpdate();
+                })
+            }
+        },
+        components: {
+            ProductCard
+        },
+        mounted: function(){
+            this.getAllProducts();
+        }
+    }
+
     //Роути (які копоненти відображати)
     const routes = {
         '/': Home,
         '/home': Home,
         '/login': Login,
-        '/addproduct': AddProduct
+        '/addproduct': AddProduct,
+        '/allproducts': AllProducts
     }
 
     const app = {
