@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Курсова робота. Додвання компонент для адміністрування сайту №3. Відображення та редагування товарів.</h1>
+
+    <h3>1. Додайте кнопки видалення і редагування товару від імені адміна.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+
+    <h3>2. Додайте редагування за допомогою модального вікна.</h3>
+
+    <xmp>
+        <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editProductModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3 mt-4">
+                    <label class="form-label">Product name</label>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+
+                  <!--Price and Image inputs-->
+              </div>
+            </div>
+          </div>
+    </xmp>
+
+   
+</body>
+</html>

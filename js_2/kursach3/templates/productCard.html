@@ -8,9 +8,12 @@
            <span>Вартість: </span>
            <span>{{product.price}}$</span>
         </p>
-        <p class="d-flex justify-content-end">
+        <p class="d-flex justify-content-between">
             <button class="btn btn-danger btn-sm" @click="deleteProduct(product.id)">
                 Delete
+            </button>
+            <button class="btn btn-primary btn-sm px-3">
+                Edit
             </button>
         </p>
     </div>
