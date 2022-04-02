@@ -2,6 +2,9 @@
 OpenSans Extrabold
 FontAwesome
 OpenSans Bold*/
+body{
+  font-family: sans-serif;
+}
 header .header__content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -191,6 +194,7 @@ header .header__content .menu .active {
 }
 
 .hosting .hosting__content .hosting__box .hosting__button {
+  text-decoration: none;
   height: 40px;
   width: 80%;
   margin-bottom: 20px;
@@ -222,5 +226,58 @@ footer {
   text-align: center;
   padding: 15px 0;
   font-size: 20px;
+}
+
+.plan{
+  display: flex;
+  font-family: sans-serif;
+}
+.plan_details, .plan_name{
+  padding: 150px 0;
+}
+.plan_details li{
+  font-size: 30px;
+  margin-bottom: 15px;
+  list-style-type: square;
+}
+.plan_name p{
+  font-size: 120px;
+  text-align: right;
+}
+.plan_name h1{
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+.buy{
+  display: flex;
+  padding: 80px 0;
+  background: #e7f4f8;
+}
+.buy p{
+  font-size: 30px;
+}
+.buy a{
+  font-size: 16px;
+  padding: 20px 80px;
+  background: #52cbf8;
+  text-align: center;
+  display: flex;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s ease;
+  border-radius: 4px;
+  font-weight: 800;
+  font-family: sans-serif;
+}
+.buy a:hover{
+  color: white;
+  background: #4abae3;
+}
+.hosting h2{
+  font-size: 40px;
+  margin-top: 80px;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=main.css.map */
