@@ -7,7 +7,6 @@
             :product="product">
         </product-card>
     </div>
-
     <div 
         class="modal fade" 
         id="editModal" 
@@ -28,15 +27,15 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label class="form-label">Product name</label>
-                    <input id="edit_name" type="text" class="form-control">
+                    <input v-model="$root.edit_product.name" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Product price</label>
-                    <input id="edit_price" type="text" class="form-control">
+                    <input v-model="$root.edit_product.price" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Product image</label>
-                    <input id="edit_image" type="text" class="form-control">
+                    <input v-model="$root.edit_product.image" type="text" class="form-control">
                 </div>
             </div>
             <div class="modal-footer">

@@ -169,18 +169,13 @@ document.addEventListener('DOMContentLoaded', async function(){
                 .doc(id)
                 .delete()
                 .then( () => {
-                    // дії після видалення
-                    console.log("Document deleted!")
                     data.edit_product = data.products.filter( e => e.id != id );
                     this.$parent.getAllProducts();
                 });
             },
             editProduct(id){
-                console.log("Edit - ", id);
                 data.edit_product = data.products.filter( e => e.id == id )[0];
-                document.getElementById('edit_name').value  = data.edit_product.name;
-                document.getElementById('edit_price').value = data.edit_product.price;
-                document.getElementById('edit_image').value = data.edit_product.url;
+                this.$parent.$forceUpdate();
             }
         }
     }
@@ -202,15 +197,10 @@ document.addEventListener('DOMContentLoaded', async function(){
                         };
                         data.products.push(product)
                     })
-                    console.log(data.products);
                     this.$forceUpdate();
                 })
             },
             saveEditedProduct(){
-                data.edit_product.name  = document.getElementById('edit_name').value;
-                data.edit_product.price = document.getElementById('edit_price').value;
-                data.edit_product.url = document.getElementById('edit_image').value;
-
                 db.collection("products")
                 .doc(data.edit_product.id)
                 .update(data.edit_product)
