@@ -38,6 +38,18 @@
 
     <xmp>
       <script>
+        // Видалення документу у firebase по id
+        db.collection("products").doc(id).delete();
+
+        // Можна відслідковувати заверешення операції видалення
+        db.collection("products")
+        .doc(id)
+        .delete()
+        .then( function(){
+            // дії після видалення
+            console.log("Document deleted!")
+        });
+
         // редагування документу у firebase по id
         //update оновлює вказані поля документа не змінюючи інші які не вказані у user 
         db.collection("products")
