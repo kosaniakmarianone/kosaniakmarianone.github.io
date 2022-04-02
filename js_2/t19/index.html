@@ -53,6 +53,40 @@
           </div>
     </xmp>
 
+    <h3>3. Оновіть товар у firebase.</h3>
+
+    <xmp>
+      <script>
+        // редагування документу у firebase по id
+        //update оновлює вказані поля документа не змінюючи інші які не вказані у user 
+        db.collection("products")
+        .doc(id)
+        .update(product);
+
+        // Можна відслідковувати заверешення операції видалення
+        db.collection("products")
+        .doc(id)
+        .update()
+        .then( function() {
+            // дії після оновлення
+            console.log("Document is updated!")
+        });
+
+
+        //set повністю замінює документа 
+         db.collection("products").doc(id).set(product);
+
+        // Можна відслідковувати заверешення операції заміни
+        db.collection("products")
+        .doc(id)
+        .set()
+        .then( function() {
+            // дії після заміни
+            console.log("Document is updated!")
+        });
+    </script>
+    </xmp>
+
    
 </body>
 </html>
