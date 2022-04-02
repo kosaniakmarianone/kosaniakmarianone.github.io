@@ -231,6 +231,8 @@ footer {
 .plan{
   display: flex;
   font-family: sans-serif;
+  background: #222836;
+  color: white;
 }
 .plan_details, .plan_name{
   padding: 150px 0;
