@@ -184,13 +184,11 @@ document.addEventListener('DOMContentLoaded', async function(){
         template: allProducts.data,
         methods: {
             getAllProducts(){
-                console.log("GET ALL PRODUCTS!!!!");
                 db.collection("products")
                 .get()
                 .then( res => {
                     data.products = [];
                     res.forEach( element => {
-                        console.log(element)
                         const product = {
                             ...element.data(),
                             id: element.id
@@ -244,12 +242,10 @@ document.addEventListener('DOMContentLoaded', async function(){
             checkUser(){
                 data.user = JSON.parse(localStorage.getItem("user")) || {};
                 data.admin = JSON.parse(localStorage.getItem("admin")) || false;
-
                 if(data.user.email != null){
                     data.logged = true;
                 }
                 this.$forceUpdate();
-                console.log("User checked!");
             }
         },
         components: { },
