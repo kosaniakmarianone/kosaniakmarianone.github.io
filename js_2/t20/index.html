@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T2</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Курсова робота. Створення корзини.</h1>
+
+    <h3>1. Додайте нові компоненти для показу товарів користувачу. Додайте відповідні посилання у меню та налаштуйте для них routing.</h3>
+
+    <h3 align="center">
+        <img src="1.png"  alt="" >
+    </h3>
+    <h3 align="center">
+        <img src="1.gif"  alt="" >
+    </h3>
+
+    <h3 align="center">Компонентa OrderProducts</h3>
+    <p>html для orderProducts.html (компоненти OrderProducts)</p>
+    <xmp>
+        <div class="orderProducts">
+            <h1 class="text-center">Products</h1>
+            
+            <div class="d-flex flex-wrap justify-content-around mt-5">
+                <!--нова коммпонента для відображення товарів (card)-->
+            </div>
+        </div>
+    </xmp>
+
+    <p>Vue.js для компонента OrderProducts</p>
+    <xmp>
+        <script>
+            const OrderProducts = {
+                template: orderProducts.data,
+                methods: {
+                    getAllProducts(){
+                        db.collection("products")
+                        .get()
+                        .then( res => {
+                            data.products = [];
+                            res.forEach( element => {
+                                const product = {
+                                    ...element.data(),
+                                    id: element.id
+                                };
+                                data.products.push(product)
+                            })
+                            this.$forceUpdate();
+                        })
+                    }
+                },
+                components: {
+                    OrderProductCard //птрібно стоврити нову копоненту для відображення товарів
+                },
+                mounted: function(){
+                    this.getAllProducts();
+                }
+            }
+        </script>
+    </xmp>
+
+    <h3>2. У корзині зберігайте лише id товару. У компоненті для корзини створіть метод який витягуватиме товари по їх id</h3>
+
+    <xmp>
+        <script>
+            db.collection('products')
+            .where(firebase.firestore.FieldPath.documentId(), 'in',["id_1","id_2","id_3"])
+            .get()
+            .then( res => {
+                console.log(res);
+            })
+        </script>
+    </xmp>
+
+   
+</body>
+</html>
