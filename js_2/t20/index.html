@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript v2. T2</title>
+    <title>JavaScript v2. T20</title>
     <style>
         body{font-family: sans-serif;color:navy}
         p{font-size: 16px;}
@@ -41,7 +41,7 @@
             <h1 class="text-center">Products</h1>
             
             <div class="d-flex flex-wrap justify-content-around mt-5">
-                <!--нова коммпонента для відображення товарів (card)-->
+                <!--нова коммпонента для відображення товарів (order-card)-->
             </div>
         </div>
     </xmp>
@@ -78,12 +78,14 @@
         </script>
     </xmp>
 
-    <h3>2. У корзині зберігайте лише id товару. У компоненті для корзини створіть метод який витягуватиме товари по їх id</h3>
+    <h3>2. Створіть нову компоненту для відображення товарів для покупця у вигляді картки. Додайте кнопку додати у корзину.</h3>
+
+    <h3>3. У корзині зберігайте лише id товару. У компоненті для корзини створіть метод який витягуватиме товари по їх id</h3>
 
     <xmp>
         <script>
             db.collection('products')
-            .where(firebase.firestore.FieldPath.documentId(), 'in',["id_1","id_2","id_3"])
+            .where(firebase.firestore.FieldPath.documentId(), 'in', ["id_1","id_2","id_3"])
             .get()
             .then( res => {
                 console.log(res);
