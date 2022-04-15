@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript v2. T20</title>
+    <style>
+        body{font-family: sans-serif;color:navy}
+        p{font-size: 16px;}
+        a,b{color: red}
+		#message{background: lime;max-width: 100%;}
+		#message--p{display: inline-block;background: orange}
+		#message2{background: orange;max-width: 1000px}
+		img{
+			max-width: 900px;
+			border: 2px solid red;
+		}
+        xmp{ 
+            background: lightyellow;
+        }
+    </style>
+    <link rel="icon" href="../Untitled.png">
+</head>
+<body>
+    <h1>Курсова робота. Створення корзини.</h1>
+
+    <h3>1. При переході між козиною і товарами зберігайте на кртках позначення, що вони вже у корзині.</h3>
+
+    <h3 align="center">
+        <img src="1.gif"  alt="" >
+    </h3>
+
+    <h3>2. Зберігайте товари з корзини у localstorage.</h3>
+
+    <h3>3. Витягнять товари з корзини по із фільтом лише по заданим id</h3>
+    <xmp>
+        <script>
+
+            //як отримати документи із firebase маючи масив id
+
+            db.collection("products")
+            .where(firebase.firestore.FieldPath.documentId(), "in", data.cart) //оператор 'in' із версії firebase 8+
+            .get()
+            .then( res => res.forEach(e => console.log(e.data())))
+
+        </script>
+    </xmp>
+
+    <h3>4. Створіть таблицю у якій показуйте товари із корзини.</h3>
+
+    <h3 align="center">
+        <img src="1.gif"  alt="" >
+    </h3>
+
+    <h3>5. Покажіть загальну вартість можливого замовлення.</h3>
+
+    <h3>6. Додайте можливість вибирати кількість замовлених товарів.</h3>
+</body>
+</html>

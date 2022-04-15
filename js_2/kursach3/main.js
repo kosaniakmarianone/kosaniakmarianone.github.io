@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', async function(){   
 
     //витягуємо темплейти
-    let home = await axios.get("templates/home.html");
-    let login = await axios.get("templates/login.html");
-    let addProduct = await axios.get("templates/addProduct.html");
-    let allProducts = await axios.get("templates/allProducts.html");
-    let productCard = await axios.get("templates/productCard.html");
+    let home             = await axios.get("templates/home.html");
+    let login            = await axios.get("templates/login.html");
+    let addProduct       = await axios.get("templates/addProduct.html");
+    let allProducts      = await axios.get("templates/allProducts.html");
+    let productCard      = await axios.get("templates/productCard.html");
+    let orderProducts    = await axios.get("templates/orderProducts.html");
+    let cart             = await axios.get("templates/cart.html");
+    let orderProductCard = await axios.get("templates/orderProductCard.html");
 
     //Основна інформація для spa (сайту)
     const data =  {
@@ -17,7 +20,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         admin: false,
         newProductImage: "",
         products: [],
-        edit_product: {}
+        edit_product: {},
+        cart: []
     };
 
     //Компоненти
@@ -47,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async function(){
                     window.location.hash = "/home";
                     
                     localStorage.setItem("user", JSON.stringify(new_user));
-                    localStorage.setItem("admin", JSON.stringify(true));
 
                     this.checkAdmin(user.email);
                     console.log(new_user);
@@ -125,14 +128,23 @@ document.addEventListener('DOMContentLoaded', async function(){
                 .then( res => {
                     const adminEmails = [];
                     res.forEach( e => adminEmails.push(e.data().email) );
-
+                    console.log(adminEmails);
+                    console.log('includes', adminEmails.includes(email))
+                    console.log(email)
                     if(adminEmails.includes(email)){
                         data.admin = true;
+                        localStorage.setItem("admin", true)
                         this.$root.$forceUpdate();
                         console.log("Welcome Admin!!!");
                     }
                     else if(data.admin == true){
                         data.admin = false;
+                        localStorage.setItem("admin", false)
+                        this.$root.$forceUpdate();
+                    }
+                    else {
+                        data.admin = false;
+                        localStorage.setItem("admin", false)
                         this.$root.$forceUpdate();
                     }
                 })
@@ -217,13 +229,72 @@ document.addEventListener('DOMContentLoaded', async function(){
         }
     }
 
+    const OrderProductCard = {
+        name: "order-product-card",
+        template: orderProductCard.data,
+        props: ['product'],
+        methods: {
+            addToCart(id){
+                data.cart.push(id);
+                data.products.forEach( product => {
+                    if(product.id == id){ 
+                        product.inCart = true; 
+                    };
+                })
+                this.$root.$forceUpdate();
+                this.$forceUpdate();
+            }
+        }
+    }
+
+    const OrderProducts = {
+        template: orderProducts.data,
+        methods: {
+            getAllProducts(){
+                db.collection("products")
+                .get()
+                .then( res => {
+                    data.products = [];
+                    res.forEach( element => {
+                        const product = {
+                            ...element.data(),
+                            id: element.id
+                        };
+                        data.products.push(product);
+                    })
+                    this.$forceUpdate();
+                })
+            }
+        },
+        components: {
+            OrderProductCard
+        },
+        mounted: function(){
+            this.getAllProducts();
+        }
+    }
+
+    const Cart = {
+        template: cart.data,
+        methods: {
+
+        },
+        components: {
+        },
+        mounted: function(){
+            
+        }
+    }
+
     //Роути (які копоненти відображати)
     const routes = {
         '/': Home,
         '/home': Home,
         '/login': Login,
         '/addproduct': AddProduct,
-        '/allproducts': AllProducts
+        '/allproducts': AllProducts,
+        '/products': OrderProducts,
+        '/cart': Cart,
     }
 
     const app = {
@@ -233,6 +304,8 @@ document.addEventListener('DOMContentLoaded', async function(){
                 firebase.auth().signOut().then(() => {
                     data.logged = false;
                     data.admin = false;
+                    localStorage.removeItem("user");
+                    localStorage.removeItem("admin");
                     this.$forceUpdate();
                     window.location.hash = "/login";
                 }).catch((error) => {
