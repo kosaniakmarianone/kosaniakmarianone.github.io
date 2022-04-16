@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         newProductImage: "",
         products: [],
         edit_product: {},
-        cart: []
+        cart: [],
+        orderedProducts: []
     };
 
     //Компоненти
@@ -235,7 +236,11 @@ document.addEventListener('DOMContentLoaded', async function(){
         props: ['product'],
         methods: {
             addToCart(id){
-                data.cart.push(id);
+                if(!data.cart.includes(id)){
+                    data.cart.push(id);
+                    localStorage.setItem("cart", JSON.stringify(data.cart))
+                    console.log(data.cart)
+                }
                 data.products.forEach( product => {
                     if(product.id == id){ 
                         product.inCart = true; 
@@ -260,6 +265,9 @@ document.addEventListener('DOMContentLoaded', async function(){
                             ...element.data(),
                             id: element.id
                         };
+                        if(data.cart.includes(product.id)){
+                            product.inCart = true;
+                        }
                         data.products.push(product);
                     })
                     this.$forceUpdate();
@@ -277,12 +285,31 @@ document.addEventListener('DOMContentLoaded', async function(){
     const Cart = {
         template: cart.data,
         methods: {
-
+            getProductsFromCart(){
+                data.orderedProducts = [];
+                data.cart = JSON.parse(localStorage.getItem("cart")) || [];
+                this.$forceUpdate();
+                if(data.cart.length < 1) return;
+                db.collection("products")
+                .where(firebase.firestore.FieldPath.documentId(), "in", data.cart)
+                .get()
+                .then( res => {
+                    res.forEach(e => {
+                        const product = {
+                            id: e.id,
+                            count: 1,
+                            ...e.data()
+                        };
+                        data.orderedProducts.push(product);
+                    })
+                    this.$forceUpdate();
+                })
+            }
         },
         components: {
         },
         mounted: function(){
-            
+            this.getProductsFromCart();
         }
     }
 
@@ -315,6 +342,7 @@ document.addEventListener('DOMContentLoaded', async function(){
             checkUser(){
                 data.user = JSON.parse(localStorage.getItem("user")) || {};
                 data.admin = JSON.parse(localStorage.getItem("admin")) || false;
+                data.cart = JSON.parse(localStorage.getItem("cart")) || [];
                 if(data.user.email != null){
                     data.logged = true;
                 }
