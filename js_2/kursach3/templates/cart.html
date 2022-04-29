@@ -24,7 +24,10 @@
             <td>{{product.price}}</td>
             <td>{{product.count}}</td>
             <td>
-              <button class="btn btn-sm btn-danger">Remove</button>
+              <button 
+                class="btn btn-sm btn-danger" 
+                @click="removeProductFromCart(product.id)"
+              >Remove</button>
             </td>
           </tr>
         </tbody>

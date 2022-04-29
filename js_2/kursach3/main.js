@@ -304,6 +304,13 @@ document.addEventListener('DOMContentLoaded', async function(){
                     })
                     this.$forceUpdate();
                 })
+            },
+            removeProductFromCart(id){
+                data.cart = data.cart.filter(prod_id => prod_id != id);
+                data.orderedProducts = data.orderedProducts.filter(prod => prod.id != id);
+                localStorage.setItem("cart", JSON.stringify(data.cart));
+                this.$forceUpdate();
+                this.$root.$forceUpdate();
             }
         },
         components: {
