@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         products: [],
         edit_product: {},
         cart: [],
-        orderedProducts: []
+        orderedProducts: [],
+        newOrder: { order: {}, user: {} }
     };
 
     //Компоненти
@@ -302,6 +303,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                         };
                         data.orderedProducts.push(product);
                     })
+                    this.countOrderPrice();
                     this.$forceUpdate();
                 })
             },
@@ -309,8 +311,25 @@ document.addEventListener('DOMContentLoaded', async function(){
                 data.cart = data.cart.filter(prod_id => prod_id != id);
                 data.orderedProducts = data.orderedProducts.filter(prod => prod.id != id);
                 localStorage.setItem("cart", JSON.stringify(data.cart));
+                this.countOrderPrice();
                 this.$forceUpdate();
                 this.$root.$forceUpdate();
+            },
+            countOrderPrice(){
+                console.log(data.orderedProducts);
+                let orderSum = 0;
+                data.orderedProducts.forEach(p => {
+                    orderSum += Number(p.price)*p.count;
+                })
+                data.newOrder = {
+                    order: {
+                        sum: orderSum,
+                        products: data.orderedProducts
+                    },
+                    user: data.user
+                }
+                const date = new Date();
+                console.log(date)
             }
         },
         components: {
@@ -340,6 +359,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                     data.admin = false;
                     localStorage.removeItem("user");
                     localStorage.removeItem("admin");
+                    data.user = {};
                     this.$forceUpdate();
                     window.location.hash = "/login";
                 }).catch((error) => {
