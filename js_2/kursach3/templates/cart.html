@@ -2,7 +2,12 @@
     <h1 class="text-center">My cart</h1>
     <h3 class="text-center">({{$root.cart.length}}) products in cart</h3>
     
-    <div class="d-flex flex-wrap justify-content-around mt-5">
+    <h2 v-if="$root.orderSubmited" style="color: green;">
+      Thanks!<br>
+      Your order is pending.
+    </h2>
+
+    <div class="d-flex flex-wrap justify-content-around mt-5" v-if="$root.orderedProducts.length > 0">
       <table class="table table-striped table-hover">
         <thead>
           <tr class="text-center">
@@ -50,7 +55,7 @@
       </div>
       <div class="col-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-outline-primary" >Submit order</button>
+          <button class="btn btn-outline-primary" @click="submitOrder()">Submit order</button>
         </div>
       </div>
     </div>

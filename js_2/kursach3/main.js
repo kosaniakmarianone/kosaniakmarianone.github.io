@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         edit_product: {},
         cart: [],
         orderedProducts: [],
-        newOrder: { order: {}, user: {} }
+        newOrder: { order: {}, user: {}, status: "pending" },
+        orderSubmited: false
     };
 
     //Компоненти
@@ -269,6 +270,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                         if(data.cart.includes(product.id)){
                             product.inCart = true;
                         }
+                        product.price = product.price.replace(/\s/g, '');
                         data.products.push(product);
                     })
                     this.$forceUpdate();
@@ -301,6 +303,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                             count: 1,
                             ...e.data()
                         };
+                        product.price = product.price.replace(/\s/g, '');
                         data.orderedProducts.push(product);
                     })
                     this.countOrderPrice();
@@ -328,8 +331,23 @@ document.addEventListener('DOMContentLoaded', async function(){
                     },
                     user: data.user
                 }
-                const date = new Date();
-                console.log(date)
+            },
+            submitOrder(){
+                console.log("Save order to db");
+                if( !confirm("Submit order?") ){ return }
+
+                data.newOrder.status = "pending";
+                db.collection("orders")
+                .add(data.newOrder)
+                .then( res => {
+                    console.log("Order submited!!!!!!!!!!!!!!!!!!")
+                    data.cart = [];
+                    data.orderedProducts = [];
+                    data.newOrder = { order: {}, user: {}, status: "pending" };
+                    localStorage.removeItem("cart")
+                    this.$root.$forceUpdate();
+                })
+
             }
         },
         components: {
