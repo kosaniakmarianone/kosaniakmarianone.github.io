@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+}
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    background: linear-gradient(rgb(0, 0, 158), rgb(0, 0, 158), white);
+}
+.menu_link{
+    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    margin: 0 10px;
+}
+.menu_link img{
+    height: 46px;
+    margin-right: 10px;
+}
