@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', async function(){
     let orderProducts    = await axios.get("templates/orderProducts.html");
     let cart             = await axios.get("templates/cart.html");
     let orderProductCard = await axios.get("templates/orderProductCard.html");
+    let myOrders         = await axios.get("templates/myOrders.html");
+    let myOrdеrsAdmin    = await axios.get("templates/myOrdеrsAdmin.html");
 
     //Основна інформація для spa (сайту)
     const data =  {
@@ -24,7 +26,9 @@ document.addEventListener('DOMContentLoaded', async function(){
         cart: [],
         orderedProducts: [],
         newOrder: { order: {}, user: {}, status: "pending" },
-        orderSubmited: false
+        orderSubmited: false,
+        myOrders: [],
+        adminOrders: []
     };
 
     //Компоненти
@@ -357,6 +361,61 @@ document.addEventListener('DOMContentLoaded', async function(){
         }
     }
 
+    const MyOrdеrs = {
+        template: myOrders.data,
+        methods: {
+            getMyOrders(){
+                data.myOrders = [];
+                const userEmail = data.user?.email || JSON.parse(localStorage.getItem("user"))?.email;
+                console.log(userEmail)
+                db.collection("orders")
+                .where("user.email", "==", userEmail)
+                .get()
+                .then( res => {
+                    res.forEach(e => {
+                        const order = {
+                            id: e.id,
+                            ...e.data()
+                        }
+                        data.myOrders.push(order)
+                    })
+                    console.log(data.myOrders);
+                    this.$forceUpdate();
+                })
+            }
+        },
+        mounted: function(){
+            //що відбувається при першому показі
+            this.getMyOrders();
+        }
+    }
+
+    const MyOrdеrsAdmin = {
+        template: myOrdеrsAdmin.data,
+        methods: {
+            getAllOrders(){
+                data.adminOrders = [];
+                db.collection("orders")
+                .get()
+                .then( res => {
+                    res.forEach(e => {
+                        const order = {
+                            id: e.id,
+                            ...e.data()
+                        }
+                        data.adminOrders.push(order)
+                    })
+                    console.log(data.myOrders);
+                    this.$forceUpdate();
+                })
+            }
+        },
+        mounted: function(){
+            //що відбувається при першому показі
+            this.getAllOrders();
+        }
+    }
+
     //Роути (які копоненти відображати)
     const routes = {
         '/': Home,
@@ -366,6 +425,8 @@ document.addEventListener('DOMContentLoaded', async function(){
         '/allproducts': AllProducts,
         '/products': OrderProducts,
         '/cart': Cart,
+        '/my-orders': MyOrdеrs,
+        '/orders-admin': MyOrdеrsAdmin
     }
 
     const app = {
