@@ -9,6 +9,8 @@
           <th scope="col">Products</th>
           <th scope="col" style="min-width:100px;">Total price</th>
           <th scope="col">Status</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +42,26 @@
               {{ orderData.status }}
             </span>
           </th>
+
+          <th scope="col">
+            <select 
+              class="form-select form-select-sm" 
+              v-model="orderData.status" 
+              @change="changeStatus(orderData.status, orderData.id)"
+            >
+              <option value="pending">Pending</option>
+              <option value="sended">Sended</option>
+              <option value="done">Done</option>
+              <option value="failed">Failed</option>
+            </select>
+          </th>
+
+          <th scope="col">
+            <button 
+              class="btn btn-danger btn-sm" 
+              @click="deleteOrder(orderData.id)">Delete</button>
+          </th>
+
         </tr>
       </tbody>
     </table>
