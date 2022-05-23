@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', async function(){
     //Компоненти
     const Home = {
         template: home.data,
+        mounted: function(){
+ 
+        }
     };
 
     const Login = {

@@ -56,3 +56,8 @@ footer{
 .footer_contacts{
     font-size: 1.4rem;
 }
+
+.footer_contacts a{
+    text-decoration: none;
+    color: white;
+}
