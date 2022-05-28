@@ -279,7 +279,6 @@ document.addEventListener('DOMContentLoaded', async function(){
                         if(data.cart.includes(product.id)){
                             product.inCart = true;
                         }
-                        product.price = product.price.replace(/\s/g, '');
                         data.products.push(product);
                     })
                     this.$forceUpdate();
