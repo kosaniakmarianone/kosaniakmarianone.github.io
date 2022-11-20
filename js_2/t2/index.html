@@ -23,37 +23,35 @@
     <link rel="icon" href="../Untitled.png">
 </head>
 <body>
-    <h1>Request та Responce. Опрацювання данних отриманих від бази данних (.then(), .catch())</h1>
+    <h1>Request та Responce. Опрацювання данних отриманих від бази данних (.then())</h1>
 
     <h3>1. Створіть окремий файл у папці firebase з конфігурацією вашої бази данних.</h3>
 
     <h3 align="center">
         <img src="../t1/images/4.png" alt="" >
     </h3>
-    
-    <xmp>
-        // Файл index.js у папці firebase
-        const firebaseConfig = {
-        apiKey: "...",
-        authDomain: "...",
-        projectId: "...",
-        storageBucket: "...",
-        messagingSenderId: "...",
-        appId: "...",
-        measurementId: "...",
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        var db = firebase.firestore();
-    </xmp>
 
     <h3>2. Створіть веб-сторінку та підключіть до неї firebase firestore.</h3>
 
     <xmp>
-        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
-        <script src="../firebase/index.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script>
+             // Це можна винести у окремий файл. І потім підключити його
+            const firebaseConfig = {
+                apiKey: "...",
+                authDomain: "...",
+                projectId: "...",
+                storageBucket: "...",
+                messagingSenderId: "...",
+                appId: "...",
+                measurementId: "...",
+            };
+
+            firebase.initializeApp(firebaseConfig);
+
+            var db = firebase.firestore();
+        </script>
     </xmp>
 
     <h3>3. Додайте у базу данних декілька статтей в колекції <b>articles</b>. Статті зберігайте з такими ключами: <b>title</b>, <b>article</b>, <b>author</b></h3>
@@ -62,16 +60,132 @@
         <img src="1.png" alt="" >
    </h3>
 
-    <h3>4. Показуйте на сторінці спінер доки данні не будуть завантаженні з бази данних.</h3>
+    <h3>4. Показуйте на сторінці спінер доки данні не будуть завантаженні з бази данних. </h3>
 
+    <br><br> 1. Збережіть картинку клікнувши по ній правою кнопкою та виберіть опцію "Зберегти як".
+        
     <h3 align="center">
         <img src="spiner.gif" alt="" >
+    </h3>
+
+    <br> 2 Додайте картинку на вашу сторінку
+
+    <h3 align="center">
+        <img src="3.png" alt="" >
+    </h3>
+
+    <br> 3 Додайте прожній контейнер для статтей на html-сторінку
+
+    <h3 align="center">
+        <img src="4.png" alt="" >
     </h3>
 
     <h3>5. Приховайте спінер та відобразіть статті із бази данних коли вони завантажаться.</h3>
 
     <h3 align="center">
         <img src="2.png" alt="" >
+    </h3>
+
+    <br> 1 Створіть 3 змінних для подальшої роботи
+    <xmp>
+        <script>
+            const spiner   = document.getElementById('spiner');  // контейнер із спінером
+            const list     = document.getElementById('list');    // контейнер із статтями 
+            const articles = [];                                 // масив статтей які ми отримаємо із бази данних
+        </script>
+    </xmp>
+
+    <br> 2 Створіть функцію яка буде отримувати статті із бази данних та зберігатиме їх у масив  articles
+    <xmp>
+        <script>
+            const spiner   = document.getElementById('spiner'); 
+            const list     = document.getElementById('list');
+            const articles = [];  
+            
+            db.collection("articles").get().then( res => {
+                res.forEach( doc => {
+                    const article = doc.data();
+                    articles.push(article);
+                });
+                console.log(articles);
+            });
+        </script>
+    </xmp>
+
+    <br> 3 Приховуйте спінер після отримання відовіді зі бази данних
+    <xmp>
+        <script>
+            const spiner   = document.getElementById('spiner'); 
+            const list     = document.getElementById('list');
+            const articles = [];  
+            
+            db.collection("articles").get().then( res => {
+
+                spiner.style.display = "none";                 // Код який ховатиме блок із спінером
+
+                res.forEach( doc => {
+                    const article = doc.data();
+                    articles.push(article);
+                });
+                console.log(articles);
+            });
+        </script>
+    </xmp>
+
+    <br> 4 Створіть функцію <b>drawArticle(data)</b> яка прийматиме у якост аргументу об'єкт (статтю).
+    <br> Функція повинна створювати html-елемент <b>article</b>. 
+    <br> Заповніть цей елемент відповідними полями від статті.
+    <br> У кінці додавайте у блок з id <b>list</b> стврений блок <b>article</b> 
+    <xmp>
+        <script>
+            //....
+            
+            function drawArticle(data){
+                const article = document.createElement('article');  // Створюємо новий html елемент article
+
+                const title = document.createElement('h2');         // Створюємо новий html елемент h2 (заголовок для article) 
+                const text = document.createElement('div');         // Створюємо новий html елемент div (контейнер для тексту у article) 
+                const author = document.createElement('a');         // Створюємо новий html елемент а (посилання на ресурс у article)
+
+                title.innerHTML  = data.title;                      // Додаємо відповідні тести у потрібні блоки статті. 
+                text.innerHTML   = data.article;                    // Використовуютсья .innerHTML для того, щоб враховуватии htьl теги збержені у базі данних
+                author.innerHTML = "Оригінал";
+                author.href      = data.author;
+
+                article.appendChild(title);                         // Вставляємо заголовок у елемент article
+                article.appendChild(text);                          // Вставляємо текст у елемент article
+                article.appendChild(author);                        // Вставляємо посилання у елемент article
+
+                list.appendChild(article);                          // Вставляємо article у елемент на нашій стоорінці
+            }
+        </script>
+    </xmp>
+    <br> 4 Викликайте функцію для відображення статті у масиві який опрацьовує відповідь від бази данних.
+
+    <xmp>
+        <script> 
+            //....
+             db.collection("articles").get().then( res => {
+
+                spiner.style.display = "none";                 
+
+                res.forEach( doc => {
+                    const article = doc.data();
+                    articles.push(article);
+                    drawArticle(article)                     // Додати на сторінку кожну статтю
+                });
+                console.log(articles);
+            });
+
+            //....
+        </script>
+    </xmp>
+    <h3 align="center">
+        <img src="2.png" alt="" >
+    </h3>
+    </xmp>
+    <h3 align="center">
+        <img src="5.png" alt="" >
     </h3>
 </body>
 </html>
