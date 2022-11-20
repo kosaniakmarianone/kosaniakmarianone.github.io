@@ -47,8 +47,8 @@
     <h3>4. Підключіть вашу базу данних до html-сторінки. Використайте налаштування з вашої бази данних</h3>
 
     <xmp>
-        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
         <script>
             const firebaseConfig = {
             apiKey: "...",
@@ -73,10 +73,71 @@
    
     <xmp>
         <script>
-            db.collection("users").get().then(function(responce) {
-                responce.forEach(function(doc) {
+            //Як отримати документи із колеції
+
+            db.collection("users")                  //звернення до колекції "users" із бази данних (db)
+            .get()                                  // Запит на отримання документів хі бази данних (у даному випадку усіх)
+            .then(                                  // Метод .then() опрацьовує відповідь (response) від бази данних. В якості аргументу приймає функцію яка може опрцювати відповідь 
+            function(responce) {                    // responce - тут це відповідь який ми отримали від firebase. Це масив із об'єктів збережених у базі данних.
+                responce.forEach(function(doc) {    // Методом .forEach ми перебираємо усі документи. doc - це збережений у базі данних документ
+                        console.log(doc.id);        // doc.id - id документу
+                        console.log(doc.data());    // для того щоб отримати данні у збереженому документі потрібно використати метод .data()
+                    })
+                }
+            )
+
+
+
+            // Фунція у методі .then() яка опрацьовує відповідь може бути спрощена у записі. Для цього використоуються стрілочні функції
+            
+            db.collection("users")
+            .get()
+            .then(res => console.log(res));
+            
+
+
+            //Короткий запис запиту для відображення кожного збереженого документу (об'єкту) у колекції
+
+            db.collection("users").get().then(res =>
+                res.forEach(doc => {
                     console.log(doc.data());
+                })
+            );
+
+
+
+            //Як отримати масив із збережених у базі данних об'єктів 
+
+            const users = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => users.push(doc.data()));
+                console.log(users)
+            });
+
+
+
+            //Якщо потрібні id документів тоді їх потрібно додавати у об'єкт окремо
+
+            const users_2 = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => {
+                    const user = doc.data();
+                    user.id = doc.id;
+                    users_2.push(user)
                 });
+                console.log(users)
+            });
+
+
+
+            //Скорочений запис з використанням нововведень у js
+
+            const users_3 = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => {
+                    users_3.push({id: doc.id, ...doc.data()})
+                });
+                console.log(users)
             });
         </script>
     </xmp>

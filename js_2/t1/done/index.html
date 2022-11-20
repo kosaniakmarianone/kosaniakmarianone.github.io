@@ -15,13 +15,13 @@
         //увесь код у цьому скрипті перенести у інший файл і підключити його. Для завдання 4.
         //Start
         const firebaseConfig = {
-            apiKey: "...",
-            authDomain: "...",
-            projectId: "...",
-            storageBucket: "...",
-            messagingSenderId: "...",
-            appId: "...",
-            measurementId: "..."
+            apiKey: "AIzaSyA7KHlFAo8Qja8q9JjawiRmjbTfULRbg7U",
+            authDomain: "sl-t-20359.firebaseapp.com",
+            projectId: "sl-t-20359",
+            storageBucket: "sl-t-20359.appspot.com",
+            messagingSenderId: "166422962560",
+            appId: "1:166422962560:web:00984fbca2c4f4d1f1a165",
+            measurementId: "G-8RN120XBPZ"
         };
 
         firebase.initializeApp(firebaseConfig);
@@ -32,10 +32,38 @@
       </script>
 
       <script>
-            db.collection("users").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+            //Як відобразити кожен збережений документ (об'єкт) у колекції
+            db.collection("users").get().then(res => {
+                res.forEach(doc => {
                     console.log(doc.data());
                 });
+            });
+
+            //Як отримати масив із збережених у базі данних об'єктів 
+            const users = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => users.push(doc.data()));
+                console.log(users)
+            });
+
+            //Якщо потрібні id документів тоді їх потрібно додавати окремо
+            const users_2 = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => {
+                    const user = doc.data();
+                    user.id = doc.id;
+                    users_2.push(user)
+                });
+                console.log(users)
+            });
+
+            //Скорочений запис з використанням новвоведень у js
+            const users_3 = [];
+            db.collection("users").get().then(res => {
+                res.forEach(doc => {
+                    users_3.push({id: doc.id, ...doc.data()})
+                });
+                console.log(users)
             });
       </script>
 </body>
