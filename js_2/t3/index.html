@@ -13,7 +13,7 @@
 		#message--p{display: inline-block;background: orange}
 		#message2{background: orange;max-width: 1000px}
 		img{
-			max-width: 900px;
+			max-width: 600px;
 			border: 2px solid red;
 		}
         xmp{ 
@@ -27,17 +27,40 @@
 
     <h3>1. Створіть 2 веб-сторінки та підключіть до них firebase firestore окремим файлом.</h3>
 
-    <h3>2. Сторнки повинні мати форми для додавання нових об'єктів у firbase - user, article</h3>
-   
-    <h3 align="center">
-        <img src="1.png" alt="" >
+    <h3>
+        2. Сторнки повинні мати форми для додавання нових об'єктів у firbase - user, article. Використайте bootstrap форми за 
+        <a href="https://getbootstrap.com/docs/4.4/components/forms/" target="_blank">посиланням</a>
     </h3>
-
-    <h3 align="center">
+   
+    <h3 align="center" style="display: flex; justify-content: space-around;">
+        <span>Сторінка №1 (<b>add_user.html</b>)</span>
+        <span>Сторінка №2 (<b>add_article.html</b>)</span>
+    </h3>
+    <h3 align="center" style="display: flex; justify-content: space-around;">
+        <img src="1.png" alt="" >
         <img src="2.png" alt="" >
     </h3>
     
-    <h3>3. Нові обєкти повинні містити ключі як об'єкти з попередніх завдань.</h3>
+    <h3>3. Створіть функції <b>saveUser()</b> та <b>saveArticle()</b> які зберігатимуть нового користувача та статтю у базу данних при кліку на кнопки <b>Add user</b> та <b>Add article</b>.</h3>
+    <xmp>
+        <script>
+            function addUser(){
+                const name = document...;
+                const last_name = ...;
+                const email = ...;
+
+                const new_user = {
+                    title: title,
+                    author: author,
+                    text: text
+                }
+                console.log(new_user)
+                ...
+                ...
+            }
+        </script>
+    </xmp>
+    <h3>4. Нові обєкти повинні містити ключі як об'єкти з попередніх завдань.</h3>
 
     <h3> Article: <b>title</b>, <b>author</b>, <b>text</b>.</h3>
 
@@ -45,7 +68,7 @@
 
     <xmp>
         <script>
-            // Додавання нового документу у firebase
+            // Приклад додавання нового документу у firebase
             db.collection("users").add({
                 name: "Taras",
                 lastName: "Milevich",

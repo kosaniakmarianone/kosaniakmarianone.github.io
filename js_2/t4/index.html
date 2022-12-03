@@ -31,15 +31,67 @@
         <img src="1.png" alt="" >
     </h3>
 
-    <h3>2. Створіть функцію <b>drawUser(user)</b> яка додаватиме користувача у талицю на вашій сторінці.</h3>
-
-    <h3>3. Покажіть у таблиці всі поля користувача та додайте напроти кнопку редагувати і видалити</h3>
-
+    <h3>
+        2. Додайте макет таблиці викристовуючи bootstrap за цим
+        <a href="https://getbootstrap.com/docs/5.2/content/tables/#overview" target="_blank">посиланням</a>
+    </h3> 
+    
     <h3 align="center">
         <img src="2.png" alt="" >
     </h3>
+    
+    <h3>3. Витягніть із бази данних усії користувачів. Створіть функцію <b>drawUser(user)</b> яка додаватиме користувача у таблицю на вашій сторінці. У тег <b>tbody</b> додайте id <b>table_body</b>. Функція повинна стоворювати рядки у таблиці для кожного документу та вставляти в середину тегу із id <b>table_body</b></h3>
 
-    <h3>4. Присвойте кожному рядку таблиці атрибуй id який буде рівний id користувача у firebase</h3>
+    <h3 align="center">
+        <img src="11.png" alt="" >
+    </h3>
+
+    <xmp>
+        <script>
+            const users = [];
+
+            //Витягуємо всіх юзерів із колекції users
+            db.collection("users").get().then( function(res) {
+
+                //Пребираємо кожного отриманого юзера
+                res.forEach( function(doc, inex) {
+                    const user = doc.data();
+                    users.push(user);
+                    //Додаємо юзера у фукцію щоб відобратизи його інформацію на html-сторінці
+                    drawUser(user, inex);
+                });
+
+                console.log(users);
+            });
+
+
+        function drawUser(user, index){
+            //Створюємо рядок та стовпці для таблиці у якості html-елементів 
+            const user_tr = document.createElement('tr');
+
+            const number_td = document.createElement('td');
+            const name_td = document.createElement('td');
+            const last_name_td = document.createElement('a');
+
+            //Заповнюємо html-елементи відповідними текстами
+            number_td.innerText = index;
+            name_td.innerText  = user.name;
+            last_name_td.innerText   = ....
+            ....
+
+            //додаємо стовпці у рядок
+            user_tr.appendChild(number_td);
+            user_tr.appendChild(name_td);
+
+            //додаємо рядок у таблицю
+            document.getElementById("table_body").appendChild(user_tr);
+        }
+        </script>
+    </xmp> 
+    
+    <h3>3. Покажіть у таблиці всі поля користувача та додайте напроти кнопку редагувати і видалити</h3>
+
+    <h3>4. Присвойте кожному рядку таблиці атрибут id який буде рівний id користувача у firebase</h3>
 
     <h3 align="center">
         <img src="3.png" alt="" >

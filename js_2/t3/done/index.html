@@ -28,22 +28,37 @@
    <div class="container" style="max-width: 700px;">
         <div class="mb-3 mt-4">
             <label class="form-label">Title</label>
-            <input type="text" class="form-control" placeholder="">
+            <input id="title" type="text" class="form-control" placeholder="">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Author</label>
-            <input type="text" class="form-control" placeholder="">
+            <input id="author" type="text" class="form-control" placeholder="">
         </div>
         
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Text</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="text" class="form-label">Text</label>
+            <textarea class="form-control" id="text" rows="3"></textarea>
         </div>
 
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary mb-3">Add article</button>
-          </div>
+            <button type="submit" class="btn btn-primary mb-3" onclicl="addArticle()">Add article</button>
+        </div>
    </div>
+   <script>
+        function addArticle(){
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const text = document.getElementById("text").value;
+
+            const new_article = {
+                title: title,
+                author: author,
+                text: text
+            }
+
+            db.collection("articles").add(new_article);
+        }
+   </script>
 </body>
 </html>
