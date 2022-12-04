@@ -24,21 +24,36 @@
 </head>
 <body>
     <h1>Редагування та видалення документів у firebase (№ 2)</h1>
-
-    <h3>1. Створіть функцію <b>editUser(id)</b> яка прийматиме id документа та зчитуватиме іфнормацію про користувача</h3>
-
-    <h3>2. Привяжіть до кнопки <b>Edit</b> функцію <b>editUser(id)</b>. Додавайте у форму данні про користувача.</h3>
-
+    
     <h3 align="center">
-        <img src="0.png" width="500px" alt="" >
+        <img src="1.gif" width="900px" alt="" >
     </h3>
-	
+
+    <h3>1. Створіть функцію <b>modalGetUser(id)</b> яка прийматиме id документа та зчитуватиме інформацію про користувача із бази данних. Записуйте у форму значення вибраного користувача. Зберігайте id користувача у якого в майбутньому будете зберігати нові значення.</h3>
+    <xmp>
+        <script>
+            // Отримати всю інформацю про документ із вказаним id
+            
+            db.collection("users")
+            .doc(id)
+            .get(user)
+            .then(function(res){
+                const data = res.data();
+                console.log(data);
+                
+                
+                //отримане значення можна відобразити або присвоїти його якомусь полю для введення
+
+                document.getElementById("name").value = data.name;
+                ....
+            });
+        </script>
+    </xmp> 
+
+    
+    <h3>2. Привяжіть до кнопки <b>Save changes</b> функцію <b>editUser(id)</b>. Функція буде зберігати редаговані поля для користувача.</h3>
     
     <h3>3. Зберігайте данні по кліку на кнопку "Save changes"</h3>
-
-    <h3 align="center">
-        <img src="1.png" alt="" >
-    </h3>
 
     <xmp>
         <script>
@@ -51,8 +66,8 @@
             db.collection("users").doc(id).update(user);
 
             // Можна відслідковувати заверешення операції видалення
-            db.collection("users").doc(id).update().then( function(){
-                // дії після видалення
+            db.collection("users").doc(id).update(user).then( function(){
+                // дії після редагування
                 console.log("Document is updated!")
             });
 
@@ -62,8 +77,8 @@
              db.collection("users").doc(id).set(user);
 
             // Можна відслідковувати заверешення операції видалення
-            db.collection("users").doc(id).set().then( function(){
-                // дії після видалення
+            db.collection("users").doc(id).set(user).then( function(){
+                // дії після редагування
                 console.log("Document is updated!")
             });
         </script>

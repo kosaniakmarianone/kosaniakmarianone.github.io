@@ -136,7 +136,7 @@
 
       function editUser(id){
           db.collection("users")
-          .doc(selected_user_id)  //id користувача збережене після коіку по кнопці Edit у функції modalGetUser
+          .doc(selected_user_id)  //id користувача збережене після кліку по кнопці Edit у функції modalGetUser
           .update({
               name: document.getElementById("firs_name").value,
               lastName: document.getElementById("last_name").value,
