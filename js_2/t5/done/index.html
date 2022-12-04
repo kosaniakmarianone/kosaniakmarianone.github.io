@@ -6,55 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  </head>
 <body>
     <h2 class="text-center my-4">Users list</h2>
     <div class="container">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">First name</th>
-              <th scope="col">Last name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Age</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="cNQvTgRNGcOxTzpnP6r2">
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>mark@gmail.com</td>
-              <td>16</td>
-              <td><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
-              <td><button class="btn btn-sm btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Sara</td>
-              <td>Milles</td>
-              <td>saram@gmail.com</td>
-              <td>22</td>
-              <td><button class="btn btn-sm btn-warning">Edit</button></td>
-              <td><button class="btn btn-sm btn-danger">Delete</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Kevin</td>
-              <td>Benz</td>
-              <td>kevin@gmail.com</td>
-              <td>31</td>
-              <td><button class="btn btn-sm btn-warning">Edit</button></td>
-              <td><button class="btn btn-sm btn-danger">Delete</button></td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="table_body" >
+          <!--
+          <tr id="cNQvTgRNGcOxTzpnP6r2">
+            <th>1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>mark@gmail.com</td>
+            <td>12</td>
+            <td><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button></td>
+            <td><button class="btn btn-sm btn-danger">Delete</button></td>
+          </tr>
+          -->
+        </tbody>
+      </table>
     </div>
 
+    <!--Модальне вікно-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -65,33 +50,160 @@
           <div class="modal-body">
             <div class="mb-3 mt-4">
               <label class="form-label">First name</label>
-              <input type="text" class="form-control" placeholder="">
+              <input id="firs_name" type="text" class="form-control" placeholder="">
             </div>
       
             <div class="mb-3">
               <label class="form-label">Last name</label>
-              <input type="text" class="form-control" placeholder="">
+              <input id="last_name" type="text" class="form-control" placeholder="">
             </div>
       
             <div class="mb-3">
               <label class="form-label">Email</label>
-              <input type="text" class="form-control" placeholder="">
+              <input id="email" type="text" class="form-control" placeholder="">
             </div>
       
             <div class="mb-3">
               <label class="form-label">Age</label>
-              <input type="number" class="form-control" placeholder="">
+              <input id="age" type="number" class="form-control" placeholder="">
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" onclick="editUser()" data-bs-dismiss="modal">Save changes</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="../../firebase/index.js"></script>
+    <script>
+      const users = [];
+      let selected_user_id = "";
+
+      //Витягуємо всіх юзерів із колекції users
+      db.collection("users").get().then( function(res) {
+          let index = 1;
+          //Пребираємо кожного отриманого юзера
+          res.forEach((doc) => {
+              const user = doc.data();
+              user.id = doc.id;
+              users.push(user);
+              //Додаємо юзера у фукцію щоб відобратизи його інформацію на html-сторінці
+              drawUser(user, index);
+              index++;
+          });
+
+          console.log(users);
+      });
+
+      function deleteUser(id){
+          //id юзера знаходиться у id рядка
+          console.log(this)
+          console.log(this.parentElement)
+          console.log(this.parentElement.parentElement)
+          console.log(this.parentElement.parentElement.id)
+          /*
+          Закоментовано щоб не видаляти
+          db.collection("users")
+          .doc(this.parentElement.parentElement.id)
+          .delete()
+          .then(function(){
+              console.log("User deleted!")
+          });
+          */
+      }
+
+      function modalGetUser(id){
+          //зберігаємо id вибраного користувача для майбутнього збереження нових данних
+          selected_user_id = this.parentElement.parentElement.id;
+
+          //витягуємо інформацію про юзера з firebase і записуємо у поля форми. У формі мають бути id для кожного поля
+          db.collection("users")
+          .doc(this.parentElement.parentElement.id)
+          .get()
+          .then(function(res) {
+              const user_data = res.data();
+              document.getElementById("firs_name").value = user_data.name;
+              document.getElementById("last_name").value = user_data.lastName;
+              document.getElementById("email").value = user_data.email;
+              document.getElementById("age").value = user_data.age;
+          });
+      }
+
+      function editUser(id){
+          db.collection("users")
+          .doc(selected_user_id)  //id користувача збережене після коіку по кнопці Edit у функції modalGetUser
+          .update({
+              name: document.getElementById("firs_name").value,
+              lastName: document.getElementById("last_name").value,
+              email: document.getElementById("email").value,
+              age: document.getElementById("age").value
+          })
+          .then(function(res) {
+              console.log("User updated")
+          });
+      }
+
+      function drawUser(user, index){
+          //Створюємо рядок та стовпці для таблиці у якості html-елементів 
+          const user_tr      = document.createElement('tr');
+          const number_td    = document.createElement('td');
+          const name_td      = document.createElement('td');
+          const last_name_td = document.createElement('td');
+          const email_td     = document.createElement('td');
+          const age_td       = document.createElement('td');
+          const edit_td      = document.createElement('td');
+          const delete_td    = document.createElement('td');
+          const delete_btn   = document.createElement('button');
+          const edit_btn     = document.createElement('button');
+
+          //Заповнюємо html-елементи відповідними текстами
+          number_td.innerText = index;
+          name_td.innerText  = user.name;
+          last_name_td.innerText   = user.lastName;
+          email_td.innerText   = user.email;
+          age_td.innerText   = user.age;
+          
+          edit_btn.innerText   = "Edit";
+          delete_btn.innerText   = "Delete";
+
+          //Додаємо стилі до кнопок
+          edit_btn.classList.add("btn");
+          edit_btn.classList.add("btn-sm");
+          edit_btn.classList.add("btn-warning");
+          
+          delete_btn.classList.add("btn");
+          delete_btn.classList.add("btn-sm");
+          delete_btn.classList.add("btn-danger");
+
+          //додаємо стовпці у рядок
+          user_tr.appendChild(number_td);
+          user_tr.appendChild(name_td);
+          user_tr.appendChild(last_name_td);
+          user_tr.appendChild(email_td);
+          user_tr.appendChild(age_td);
+
+          edit_btn.setAttribute("data-bs-toggle", "modal"); 
+          edit_btn.setAttribute("data-bs-target", "#exampleModal"); 
+
+          edit_td.appendChild(edit_btn);
+          delete_td.appendChild(delete_btn);
+
+          user_tr.appendChild(edit_td);
+          user_tr.appendChild(delete_td);
+
+          user_tr.id = user.id;
+          edit_btn.addEventListener("click", modalGetUser)
+          delete_btn.addEventListener("click", deleteUser)
+          
+          //додаємо рядок у таблицю
+          document.getElementById("table_body").appendChild(user_tr);
+      }  
+    </script>
+   <!-- JavaScript Bundle with Popper -->
 </body>
 </html>

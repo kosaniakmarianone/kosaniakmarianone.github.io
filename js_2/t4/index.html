@@ -65,27 +65,27 @@
             });
 
 
-        function drawUser(user, index){
-            //Створюємо рядок та стовпці для таблиці у якості html-елементів 
-            const user_tr = document.createElement('tr');
+            function drawUser(user, index){
+                //Створюємо рядок та стовпці для таблиці у якості html-елементів 
+                const user_tr = document.createElement('tr');
 
-            const number_td = document.createElement('td');
-            const name_td = document.createElement('td');
-            const last_name_td = document.createElement('a');
+                const number_td = document.createElement('td');
+                const name_td = document.createElement('td');
+                const last_name_td = document.createElement('td');
 
-            //Заповнюємо html-елементи відповідними текстами
-            number_td.innerText = index;
-            name_td.innerText  = user.name;
-            last_name_td.innerText   = ....
-            ....
+                //Заповнюємо html-елементи відповідними текстами
+                number_td.innerText = index;
+                name_td.innerText  = user.name;
+                last_name_td.innerText   = ....
+                ....
 
-            //додаємо стовпці у рядок
-            user_tr.appendChild(number_td);
-            user_tr.appendChild(name_td);
+                //додаємо стовпці у рядок
+                user_tr.appendChild(number_td);
+                user_tr.appendChild(name_td);
 
-            //додаємо рядок у таблицю
-            document.getElementById("table_body").appendChild(user_tr);
-        }
+                //додаємо рядок у таблицю
+                document.getElementById("table_body").appendChild(user_tr);
+            }   
         </script>
     </xmp> 
     

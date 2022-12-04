@@ -24,8 +24,9 @@
           </tr>
         </thead>
         <tbody id="table_body" >
+          <!--
           <tr id="cNQvTgRNGcOxTzpnP6r2">
-            <th scope="row">1</th>
+            <th>1</th>
             <td>Mark</td>
             <td>Otto</td>
             <td>mark@gmail.com</td>
@@ -33,26 +34,99 @@
             <td><button class="btn btn-sm btn-warning">Edit</button></td>
             <td><button class="btn btn-sm btn-danger">Delete</button></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Sara</td>
-            <td>Milles</td>
-            <td>saram@gmail.com</td>
-            <td>22</td>
-            <td><button class="btn btn-sm btn-warning">Edit</button></td>
-            <td><button class="btn btn-sm btn-danger">Delete</button></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Kevin</td>
-            <td>Benz</td>
-            <td>kevin@gmail.com</td>
-            <td>31</td>
-            <td><button class="btn btn-sm btn-warning">Edit</button></td>
-            <td><button class="btn btn-sm btn-danger">Delete</button></td>
-          </tr>
+          -->
         </tbody>
       </table>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="../../firebase/index.js"></script>
+    <script>
+      const users = [];
+
+      //Витягуємо всіх юзерів із колекції users
+      db.collection("users").get().then( function(res) {
+          let index = 1;
+          //Пребираємо кожного отриманого юзера
+          res.forEach((doc) => {
+              const user = doc.data();
+              user.id = doc.id;
+              users.push(user);
+              //Додаємо юзера у фукцію щоб відобратизи його інформацію на html-сторінці
+              drawUser(user, index);
+              index++;
+          });
+
+          console.log(users);
+      });
+
+      function deleteUser(id){
+          //id юзера знаходиться у id рядка
+          console.log(this)
+          console.log(this.parentElement)
+          console.log(this.parentElement.parentElement)
+          console.log(this.parentElement.parentElement.id)
+          /*
+          Закоментовано щоб не видаляти
+          db.collection("users").doc(this.parentElement.parentElement.id).delete().then( function(){
+              console.log("User deleted!")
+          });
+          */
+      }
+
+      function drawUser(user, index){
+          //Створюємо рядок та стовпці для таблиці у якості html-елементів 
+          const user_tr      = document.createElement('tr');
+          const number_td    = document.createElement('td');
+          const name_td      = document.createElement('td');
+          const last_name_td = document.createElement('td');
+          const email_td     = document.createElement('td');
+          const age_td       = document.createElement('td');
+          const edit_td      = document.createElement('td');
+          const delete_td    = document.createElement('td');
+          const delete_btn   = document.createElement('button');
+          const edit_btn     = document.createElement('button');
+
+          //Заповнюємо html-елементи відповідними текстами
+          number_td.innerText = index;
+          name_td.innerText  = user.name;
+          last_name_td.innerText   = user.lastName;
+          email_td.innerText   = user.email;
+          age_td.innerText   = user.age;
+          
+          edit_btn.innerText   = "Edit";
+          delete_btn.innerText   = "Delete";
+
+          //Додаємо стилі до кнопок
+          edit_btn.classList.add("btn");
+          edit_btn.classList.add("btn-sm");
+          edit_btn.classList.add("btn-warning");
+          
+          delete_btn.classList.add("btn");
+          delete_btn.classList.add("btn-sm");
+          delete_btn.classList.add("btn-danger");
+
+          //додаємо стовпці у рядок
+          user_tr.appendChild(number_td);
+          user_tr.appendChild(name_td);
+          user_tr.appendChild(last_name_td);
+          user_tr.appendChild(email_td);
+          user_tr.appendChild(age_td);
+          
+          edit_td.appendChild(edit_btn);
+          delete_td.appendChild(delete_btn);
+
+          
+
+          user_tr.appendChild(edit_td);
+          user_tr.appendChild(delete_td);
+
+          user_tr.id = user.id;
+          delete_btn.addEventListener("click", deleteUser)
+          
+          //додаємо рядок у таблицю
+          document.getElementById("table_body").appendChild(user_tr);
+      }  
+    </script>
 </body>
 </html>
