@@ -26,7 +26,7 @@ getArticles();
 function drawArticles(id, title) {
     const box = document.createElement('div');
     const boxImage = document.createElement('div');
-    const boxTitle = document.createElement('div');
+    const boxTitle = document.createElement('a');
 
     box.classList.add('box');
     box.classList.add('d-flex');
@@ -38,6 +38,8 @@ function drawArticles(id, title) {
     boxTitle.classList.add('box-title');
 
     boxTitle.innerText = title;
+    //console.log(window.location.href)
+    boxTitle.href = `${window.location.href.replace("index.html", "")}/article.html?id=${id}`
 
     box.appendChild(boxImage);
     box.appendChild(boxTitle);

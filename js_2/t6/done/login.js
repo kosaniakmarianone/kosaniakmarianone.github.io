@@ -1,4 +1,3 @@
-
 function login() {
     const email = document.getElementById('email');
     const password = document.getElementById('password');
@@ -7,20 +6,22 @@ function login() {
     .where('email', '==', email.value)
     .get()
     .then((res)=>{
-              res.forEach(doc => {
-              let user  = {
-                   id: doc.id,
-                   ...doc.data()
-              }
-              if(user.password == password.value){
-                   localStorage.setItem('user', JSON.stringify(user));
-                   window.location.href = 'index.html';
-              }else {
-                   alert('Невірний пароль')
-              }
-              console.log(user)   
-              })
-              
+          let logged = false;
+          res.forEach(doc => {
+               let user  = {
+                    id: doc.id,
+                    ...doc.data()
+               }
+               console.log(user)
+               if(user.password == password.value){
+                    logged = true;
+                    localStorage.setItem('user', JSON.stringify(user));
+                    window.location.href = 'index.html';
+               }
+          })
+          if (logged == false){
+               alert('Невірний логін або пароль')
+          }
     });
 }
 function checkUser() {
