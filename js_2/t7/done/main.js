@@ -53,7 +53,7 @@ console.log(phone_1.credit_month_12());
 let all_phones = [ phone_1, phone_2 ]; 
 
 function addNewPhone(){
-    console.log('click')
+    console.log('click');
     let new_phone = new Phone(
         document.getElementById("name").value, 
         document.getElementById("company").value, 
