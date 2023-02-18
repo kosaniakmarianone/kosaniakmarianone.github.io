@@ -10,7 +10,7 @@ class Admin {
         .then(res => {
             let index = 1;
             res.forEach(doc => {
-                let order = {...doc.data(), id: doc.id };
+                let order = { ...doc.data(), id: doc.id };
 
                 console.log(order)
                 this.drawOrder(order, index);
@@ -22,6 +22,7 @@ class Admin {
     static drawOrder(order, index){
         //Створюємо рядок та стовпці для таблиці у якості html-елементів 
         const order_tr     = document.createElement('tr');
+        
         const number_td    = document.createElement('td');
         const name_td      = document.createElement('td');
         const price_td     = document.createElement('td');
