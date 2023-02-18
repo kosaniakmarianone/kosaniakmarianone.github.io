@@ -30,7 +30,7 @@ class Order {
     }
 
     saveOrder(){
-        db.collection("orders").add({
+        db.collection("orders-t8").add({
             product_name:  this.product_name, 
             product_price: this.product_price,
             user_email:    this.user_email,
