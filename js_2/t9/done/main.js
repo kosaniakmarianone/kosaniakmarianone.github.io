@@ -1,17 +1,33 @@
 const test =  {
-    message: 'Hello Vue.js!',
-    kek: 2,
-    lol: 10
-  };
-const EventHandling = {
+    title: 'Hello Vue.js!',
+    clicks: 0,
+    isAdmin: false,
+    users: []
+};
+
+const MyFirstVueApp = {
     data() {
+      //State або головні значення які будуть відображатись або впливати на показ контенту на сторінці
       return test
     },
     methods: {
-      reverseMessage() {
-        this.message = 3
+      //Список медотів(функцій) які будуть використовуватись
+      clickMethod() {
+        this.clicks++;
       }
+    },
+    mounted() {
+      // Дії які слід виконати 1 раз як тільки сторінка завантажиться
+      console.log("Hello vue!");
+      db.collection("users").get().then( res => {
+          res.forEach((doc) => {
+              const user = doc.data();
+              user.id = doc.id;
+              this.users.push(user);
+              console.log(user)
+          });
+      });
     }
-  }
+}
 
-Vue.createApp(EventHandling).mount('#event-handling');
+Vue.createApp(MyFirstVueApp).mount('#app');

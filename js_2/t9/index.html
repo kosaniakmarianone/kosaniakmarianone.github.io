@@ -19,22 +19,30 @@
         xmp{ 
             background: lightyellow;
         }
+        body{
+            max-width: 1000px;
+            margin: 0 auto;
+        }
     </style>
     <link rel="icon" href="../Untitled.png">
 </head>
 <body>
     <h1>Сучасні методи розробки. Введення у vue.js</h1>
 
-    <h3>1. Пройдіть вступ із <a href="https://v3.vuejs.org/guide/installation.html" target="_blank">офіційної документації vue.js</a> .</h3>
+    <h3>1. Ознайомтесь із щфіційною документацєю для викоритання vue.js <a href="https://vuejs.org/guide/quick-start.html" target="_blank">офіційної документації vue.js</a> .</h3>
 
-    <h3>2. Розберіть пункти <b>Installation</b> та <b>Introduction</b>.</h3>
+    <h3>2. Розберіть пункт <b><a href="https://vuejs.org/guide/quick-start.html#using-vue-from-cdn" target="_blank">Using Vue from CDN</b></a>.</h3>
 
     <h3 align="center">
         <img src="1.png"  alt="" >
     </h3>
 
-    <h3>3. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js всіх юзерів із бази данних.</h3>
-
+    <h3>3. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js інформацію про всіх юзерів із бази данних. Використайте для цього <a href="https://vuejs.org/guide/essentials/list.html#v-for" target="_blank">v-for</a> із офіційної документації для vue.js</h3>
+    
+    <h3 align="center">
+        <img src="2.png"  alt="" >
+    </h3>
+    
     <xmp>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
@@ -54,7 +62,5 @@
             var db = firebase.firestore();
         </script>
     </xmp>
-
-    <h3>4. По кліку на кожного юзера виводьте в alert повну інформацію про нього.</h3>
 </body>
 </html>
