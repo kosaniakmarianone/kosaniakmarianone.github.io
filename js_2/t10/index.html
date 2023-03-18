@@ -18,14 +18,22 @@
 		}
         xmp{ 
             background: lightyellow;
+            max-height: 300px;
+            overflow-y: scroll;
         }
     </style>
     <link rel="icon" href="../Untitled.png">
 </head>
 <body>
-    <h1>Практикування vue.js №1</h1>
+    <h1>Практикування vue.js №1. Компоненти</h1>
 
-    <h3>1. За допомогою vue.js створіть сторінку з картками для товарів.</h3>
+    <h3>2. Розберіть на занятті розділ про компоненти на <a href="https://vuejs.org/guide/essentials/component-basics.html" target="_blank">сторінці з офіційною документацією для vue.js</a> .</h3>
+
+    <h3 align="center">
+        <img src="0.png"  alt="" >
+    </h3>
+
+    <h3>2. За допомогою vue.js створіть сторінку з картками із соціальними мережами.</h3>
 
     <xmp>
         <!DOCTYPE html>
@@ -44,11 +52,11 @@
         <body>
             <div id="app">
                 <p>{{ message }}</p>
-                <card-product
-                    v-for="item in products"
-                    v-bind:todo="item"
-                    v-bind:key="item.id"
-                ></card-product>
+
+                <div class="d-flex flex-wrap">
+                    <socials-component v-bind:social="social_1"></socials-component>
+                </div>
+                
 
             </div>
             <script src="main.js"></script>
@@ -56,7 +64,20 @@
         </html>
     </xmp>
 
-    <h3>2. Використайте для додавання картки темплейт. Приклад зі <a href="https://v3.vuejs.org/guide/introduction.html#composing-with-components">офіційної документаці</a></h3>
+    <h3>3. Використайте для додавання картки темплейт. Приклад зі <a href="https://v3.vuejs.org/guide/introduction.html#composing-with-components" target="_blank">офіційної документаці</a>. Додайте інші відомі вам соцмережі</h3>
+
+    <xmp>
+        <div class="card" style="width: 200px; padding: 10px; margin: 10px;">
+            <h2 class="text-center">Google</h2>
+            <img v-bind:src="https://castironsteak.com/wp-content/uploads/2016/01/google-square.jpg" style='width:100px; height: 100px; margin:0 auto;'>
+        </div>
+    </xmp>
+
+    <h3 align="center">
+        <img src="001.png"  alt="" >
+    </h3>
+
+    <h3>4. Створіть окрему компоненту для карток товарів з таким темплейтом.</h3>
 
     <xmp>
         <div class="card" style="width: 18rem;">
@@ -77,12 +98,7 @@
         </div>
     </xmp>
 
-    <h3 align="center">
-        <img src="1.png"  alt="" >
-    </h3>
-
-
-    <h3>4. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js товари із бази данних.</h3>
+    <h3>5. Підключіть до вашої сторінки firebase та виведіть за допомогою vue.js товари із бази данних.</h3>
 
     <xmp>
         <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
