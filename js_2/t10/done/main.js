@@ -29,8 +29,6 @@ const SocialsComponent = {
   </div>`
 };
 
-
-
 const app = {
   data() {
     return data
