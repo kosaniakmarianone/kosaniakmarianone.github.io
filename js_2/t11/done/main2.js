@@ -38,10 +38,25 @@ const app = {
     return data
   },
   methods: {
-   
+   getCommentsFormDB(){
+    db.collection("comments").get().then( res => {
+      this.comments = [];  //очишуємо коментарі при їх новому завантаженні
+      res.forEach((doc) => {
+            const comment = doc.data();
+            comment.id = doc.id;
+            this.comments.push(comment);
+            console.log(comment)
+        });
+      console.log(this.comments)
+    });
+   }
   },
   components: {
     CommentCommponent
+  },
+  mounted() {
+    // Витягуємо коментарі з бази данних при 1му завантаженні
+    this.getCommentsFormDB()
   }
 }
 
