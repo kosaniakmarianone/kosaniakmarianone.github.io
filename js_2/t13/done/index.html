@@ -10,9 +10,6 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
-        .container{
-            padding: 50px 0;
-        }
         .card{
             width: 24rem;
             padding: 1rem;
@@ -32,55 +29,18 @@
 <body>
     <div class="container">
         <div id="app">
-            <h1 class="text-center mb-5">Замовляй оптом</h1>
+            <h1 class="text-center mt-2 mb-5">Замовляй оптом</h1>
 
             <div class="d-flex justify-content-between flex-wrap">
                 
-                <card :product="products[0]"></card>
+                <card v-for="product in products" :product="product"></card>
             </div>
         </div>
         
     </div>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+    <script src="../../firebase/index.js"></script>
     <script src="main.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async function(){
-            let text = await axios.get("my-template.html");
-
-            const test =  {
-                message: 'Hello Vue.js!',
-                test: 0,
-                products: [
-                    {name: 'one'}
-                ]
-            };
-
-            const CardProduct = {
-                props: ['product'],
-                template: `${text.data}`,
-                methods: {
-                    testClick(data){
-                    data.name = 'one';
-                    test.test++;
-                    console.log('test click ', test.test)
-                    }
-                }
-            };
-
-            const app = {
-                data() {
-                    return test
-                },
-                methods: {
-                    test() {
-                    this.message = 3
-                    } 
-                },
-                components: {
-                    'card': CardProduct
-                }
-            }
-            Vue.createApp(app).mount('#app');
-        })
-    </script>
 </body>
 </html>
