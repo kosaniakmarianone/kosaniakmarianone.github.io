@@ -86,15 +86,15 @@
         </html>
     </xmp>
 
-    <h3>3. Використайте для вибору плану темплейт. Приклад темплейту зі <a href="https://v3.vuejs.org/guide/introduction.html#composing-with-components">офіційної документаці</a>.</h3>
+    <h3>3. Використайте для вибору плану темплейт. Приклад темплейту зі <a href="https://vuejs.org/guide/essentials/component-basics.html#using-a-component">офіційної документаці</a>.</h3>
 
     <p>html для компоненти</p>
     <xmp>
-        <div class="card">
+        <div class="card my-2">
             <div class="row">
-                <h2 class="text-center">Футболки</h2>
-                <p class="d-flex justify-content-center">
-                    <img src="https://talant.shop/static/items/2019/November/5dbc31ea8c52ab6209a6d122-medium.jpg" alt="">
+                <h5 class="text-center">Product nname</h2>
+                <p class="d-flex justify-content-center mt-2">
+                    <img :src="product.url" alt="">
                 </p>
                 <p class="d-flex justify-content-between">
                     <input class="form-control" type="number">
@@ -109,18 +109,25 @@
                         title="Choose your color">
                     <label for="exampleColorInput" class="form-label">Колір</label>
                 </p>
-                <p>
-                    <input type="checkbox" > Передзамолення (-5%)
-                </p>
-                <p>
-                    <input type="checkbox" > Швидка доставка (+10%)
+                <div class="d-flex align-items-start flex-column">
+                    <p>
+                        <input type="checkbox"> Передзамолення (-5%) <br>
+                        <small class="text-muted">Очікування 2-3 тижні</small>
+                    </p>
+                    <p>
+                        <input type="checkbox"> Швидка доставка (+10%)
+                    </p>
+                </div>
+                <p class="d-flex justify-content-between">
+                    <span>Ціна: </span>
+                    <span>$1050</span>
                 </p>
                 <p class="d-flex justify-content-between">
-                   <span>Загальна вартість: </span>
-                   <span>1020$</span>
+                   <span>Вартість замовлення: </span>
+                   <span>$1050</span>
                 </p>
                 <p class="d-flex justify-content-end">
-                    <a class="btn btn-primary" @click="testClick()">Замовити</a>
+                    <a class="btn btn-primary">Замовити</a>
                 </p>
             </div>
         </div>
@@ -129,21 +136,18 @@
     <p>Стилі для компоненти</p>
     <xmp>
         <style>
-            .container{
-                padding: 50px 0;
-            }
             .card{
                 width: 24rem;
                 padding: 1rem;
             }
             .card p{
-                font-size: 20px;
+                font-size: 16px;
             }
             input[type="number"], input[type="color"]{
                 width: 100px;
             }
             .card img{
-                width: 50%;
+                height: 175px;
                 margin: 0 auto;
             }
         </style>
