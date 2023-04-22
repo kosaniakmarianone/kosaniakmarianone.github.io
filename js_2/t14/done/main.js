@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', async function(){
     let notfound = await axios.get("templates/404.html");
 
     const data =  {
-        message: 'Hello Vue.js!',
         currentPath: window.location.hash,
     };
 
