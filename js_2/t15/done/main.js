@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     let products = await axios.get("templates/products.html");
     let orders =   await axios.get("templates/orders.html");
     let notfound = await axios.get("templates/404.html");
+    let login = await axios.get("templates/login.html");
 
     const data =  {
         message: 'Hello Vue.js!',
@@ -26,22 +27,9 @@ document.addEventListener('DOMContentLoaded', async function(){
         template: orders.data
     };
 
-    const routes = {
-        '/': Home,
-        '/home': Home,
-        '/products': Products,
-        '/orders': Orders,
-        '/not-found': NotFound,
-    }
-
-    const app = {
-        data() {
-            return data
-        },
+    const Login = {
+        template: login.data,
         methods: {
-            test() {
-                this.message = 3
-            },
             googleAuth(){
                 console.log("auth started...")
                 firebase.auth()
@@ -55,7 +43,26 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(error)
                 });
             } 
-            
+        }
+    };
+
+    const routes = {
+        '/': Home,
+        '/home': Home,
+        '/products': Products,
+        '/orders': Orders,
+        '/not-found': NotFound,
+        '/login': Login,
+    }
+
+    const app = {
+        data() {
+            return data
+        },
+        methods: {
+            test() {
+                this.message = 3
+            }
         },
         components: {
             
