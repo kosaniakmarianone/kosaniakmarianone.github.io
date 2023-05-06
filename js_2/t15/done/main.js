@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     const data =  {
         message: 'Hello Vue.js!',
         currentPath: window.location.hash,
+        products: []
     };
 
     const Home = {
@@ -20,7 +21,27 @@ document.addEventListener('DOMContentLoaded', async function(){
     };
 
     const Products = {
-        template: products.data
+        template: products.data,
+        methods: {
+            getProducts(){
+                db.collection("products").get().then( res => {
+                    this.$root.products = []; 
+                    res.forEach((doc) => {
+                        const product = doc.data();
+                        product.id = doc.id;
+                        this.$root.products.push(product);
+                      });
+                      
+                      console.log(this.$root.products)
+
+                      this.$root.$forceUpdate();
+                      this.$forceUpdate();
+                  });
+            }
+        },
+        mounted(){
+            this.getProducts();
+        }
     };
 
     const Orders = {
