@@ -11,9 +11,13 @@ document.addEventListener('DOMContentLoaded', async function(){
         currentPath: window.location.hash,
         products: [],
         newUser: {
-            email: "test@testqwewqeqww",
-            password: "dasdasd"
-        }
+            email: "",
+            password: "",
+            name: "",
+            lastName: ""
+        },
+        isLogedIn: false,
+        user: { }
     };
 
     const Home = {
@@ -74,14 +78,24 @@ document.addEventListener('DOMContentLoaded', async function(){
   
                 firebase.auth().createUserWithEmailAndPassword(this.$root.newUser.email, this.$root.newUser.password)
                 .then((userCredential) => {
-                    // Signed in 
                     var user = userCredential.user;
-                    console.log(user)
-                    // ...
+                    console.log(user);
+                    this.$root.isLogedIn = true;
+                    const newUser = {
+                        email: this.$root.newUser.email,
+                        name: this.$root.newUser.name,
+                        lastName: this.$root.newUser.lastName,
+                    }
+                    localStorage.setItem("user", JSON.stringify(newUser))
+                    this.$root.user = user;
+                    this.$root.$forceUpdate();
+                    window.location.hash = '/home';
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
+                    console.log(errorCode)
+                    console.log(errorMessage)
                     // ..
                 });
             }
@@ -102,8 +116,13 @@ document.addEventListener('DOMContentLoaded', async function(){
             return data
         },
         methods: {
-            test() {
-                this.message = 3
+            checkUser() {
+                const user = JSON.parse(localStorage.getItem("user"));
+                console.log(user)
+                if(user != null){
+                    this.isLogedIn = true;
+                    this.user = user;
+                }
             }
         },
         components: {
@@ -115,6 +134,7 @@ document.addEventListener('DOMContentLoaded', async function(){
             }
         },
         mounted() {
+            this.checkUser();
             window.addEventListener('hashchange', () => {
                 this.currentPath = window.location.hash
             })
