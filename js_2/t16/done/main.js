@@ -4,10 +4,16 @@ document.addEventListener('DOMContentLoaded', async function(){
     let products = await axios.get("templates/products.html");
     let orders =   await axios.get("templates/orders.html");
     let notfound = await axios.get("templates/404.html");
+    let login = await axios.get("templates/login.html");
 
     const data =  {
         message: 'Hello Vue.js!',
         currentPath: window.location.hash,
+        products: [],
+        newUser: {
+            email: "test@testqwewqeqww",
+            password: "dasdasd"
+        }
     };
 
     const Home = {
@@ -19,29 +25,36 @@ document.addEventListener('DOMContentLoaded', async function(){
     };
 
     const Products = {
-        template: products.data
+        template: products.data,
+        methods: {
+            getProducts(){
+                db.collection("products").get().then( res => {
+                    this.$root.products = []; 
+                    res.forEach((doc) => {
+                        const product = doc.data();
+                        product.id = doc.id;
+                        this.$root.products.push(product);
+                      });
+                      
+                      console.log(this.$root.products)
+
+                      this.$root.$forceUpdate();
+                      this.$forceUpdate();
+                  });
+            }
+        },
+        mounted(){
+            this.getProducts();
+        }
     };
 
     const Orders = {
         template: orders.data
     };
 
-    const routes = {
-        '/': Home,
-        '/home': Home,
-        '/products': Products,
-        '/orders': Orders,
-        '/not-found': NotFound,
-    }
-
-    const app = {
-        data() {
-            return data
-        },
+    const Login = {
+        template: login.data,
         methods: {
-            test() {
-                this.message = 3
-            },
             googleAuth(){
                 console.log("auth started...")
                 firebase.auth()
@@ -54,8 +67,44 @@ document.addEventListener('DOMContentLoaded', async function(){
                 .catch((error) => {
                     console.log(error)
                 });
-            } 
-            
+            },
+            emailAuth(){
+                console.log(this.$root.newUser.email)
+                console.log(this.$root.newUser.password)
+  
+                firebase.auth().createUserWithEmailAndPassword(this.$root.newUser.email, this.$root.newUser.password)
+                .then((userCredential) => {
+                    // Signed in 
+                    var user = userCredential.user;
+                    console.log(user)
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // ..
+                });
+            }
+        }
+    };
+
+    const routes = {
+        '/': Home,
+        '/home': Home,
+        '/products': Products,
+        '/orders': Orders,
+        '/not-found': NotFound,
+        '/login': Login,
+    }
+
+    const app = {
+        data() {
+            return data
+        },
+        methods: {
+            test() {
+                this.message = 3
+            }
         },
         components: {
             
