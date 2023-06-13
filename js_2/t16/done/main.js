@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', async function(){
             lastName: ""
         },
         isLogedIn: false,
-        user: { }
+        user: { },
+        loginNew: true
     };
 
     const Home = {
@@ -72,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(error)
                 });
             },
-            emailAuth(){
+            emailSignUp(){
                 console.log(this.$root.newUser.email)
                 console.log(this.$root.newUser.password)
   
@@ -97,6 +98,29 @@ document.addEventListener('DOMContentLoaded', async function(){
                     console.log(errorCode)
                     console.log(errorMessage)
                     // ..
+                });
+            },
+            emailSignIn(){
+                firebase.auth().signInWithEmailAndPassword(this.$root.newUser.email, this.$root.newUser.password)
+                .then((userCredential) => {
+                    var user = userCredential.user;
+                    console.log(user);
+                    this.$root.isLogedIn = true;
+                    const newUser = {
+                        email: this.$root.newUser.email,
+                        name: this.$root.newUser.name,
+                        lastName: this.$root.newUser.lastName,
+                    }
+                    localStorage.setItem("user", JSON.stringify(newUser))
+                    this.$root.user = user;
+                    this.$root.$forceUpdate();
+                    window.location.hash = '/home';
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode)
+                    console.log(errorMessage)
                 });
             }
         }
